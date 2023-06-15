@@ -4,7 +4,7 @@ function TempleCard({data, openTempleDetail}){
     return(
         <>
   <div className="card text-center rounded-2 mb-3" id="cardList" data-bs-dismiss="offcanvas" onClick={()=>{openTempleDetail(data)}}>
-  <img src="/src/assets/logo_ipuc.png" className="card-img-top" alt="..."/>
+  <img src="/logo_ipuc.png" className="card-img-top" alt="..."/>
   <div className="card-body">
     <h5 className="card-title">{data.name}</h5>
     {/* <a href="#" className="btn btn-primary stretched-link">Go somewhere</a> */}
