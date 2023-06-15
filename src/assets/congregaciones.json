@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Los Sauces",
+    "coordenadas": [6.3146628, -75.586008]
+  },
+  {
+    "name": "La Francia",
+    "coordenadas": [6.300458, -75.551352]
+  },
+  
+  {
+    "name": "La gran Avenida",
+    "coordenadas":[6.3200561,-75.5600862]
+  },
+  {
+    "name": "El Playón",
+    "coordenadas": [6.3064194, -75.5538564]
+  },
+  {
+    "name": "La Gabriela",
+    "coordenadas": [6.3193184,-75.548996]
+  },
+  {
+  "name": "Sabaneta Central",
+  "coordenadas": [6.1546147,-75.611138]
+  },
+  {
+    "name" : "Bello Central",
+    "coordenadas": [6.336026,-75.5528254]
+  }
+  
+]
