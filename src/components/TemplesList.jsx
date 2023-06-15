@@ -1,4 +1,4 @@
-import TempleCard from "./templeCard";
+import TempleCard from "./TempleCard";
 import { getTemples } from "../utils/data";
 import { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
