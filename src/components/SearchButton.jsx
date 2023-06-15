@@ -7,7 +7,7 @@ function SearchButton(){
         role="button"
         aria-controls="offcanvasExample"
       >
-       <img src="/src/assets/search_icon.svg" alt="Logo" width="50" height="40" className="d-inline-block align-text-top" />
+       <img src="/search_icon.svg" alt="Logo" width="50" height="40" className="d-inline-block align-text-top" />
       </a>
         {/* <button
               className="btn btn-primary "

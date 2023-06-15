@@ -22,8 +22,8 @@ import { icon } from "leaflet";
 
 
   export const templeIcon = icon({
-    iconUrl: "../../../public/ChurchMarker.svg",
-    iconRetinaUrl: "../../../public/ChurchMarker.svg",
+    iconUrl: "/ChurchMarker.svg",
+    iconRetinaUrl: "/ChurchMarker.svg",
     iconSize: [35, 35],
     // iconAnchor: null,
     // shadowUrl: null,
@@ -33,8 +33,8 @@ import { icon } from "leaflet";
   });
 
   export const locationIcon = icon({
-    iconUrl: "../../../public/LocationMarker.svg",
-    iconRetinaUrl: "../../../public/LocationMarker.svg",
+    iconUrl: "/LocationMarker.svg",
+    iconRetinaUrl: "/LocationMarker.svg",
     iconSize: [35, 35],
     // iconAnchor: null,
     // shadowUrl: null,
