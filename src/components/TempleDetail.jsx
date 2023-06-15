@@ -11,7 +11,7 @@ function TempleDetail({ templeData, closeTempleDetail }) {
       <div className="temple-detail-container">
         <div className="card text-center h-100 w-100 rounded-4 ">
           <img
-            src="/src/assets/logo_ipuc.png"
+            src="/logo_ipuc.png"
             className="card-img-top"
             alt="..."
           />
