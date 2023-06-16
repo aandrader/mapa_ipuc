@@ -9,8 +9,8 @@ import { getTemples, templeIcon, locationIcon } from "../../utils/data";
 function MapControl() {
   const [userLocation, setUserLocation] = useState([false]);
   const [templeListOpen, setTempleListOpen] = useState(false);
-  const handleToggleTempleList = () => {
-    setTempleListOpen(!templeListOpen);
+  const handleToggleTempleList = (state) => {
+    setTempleListOpen(state);
   };
   const [templeDetail, setTempleDetailData] = useState({
     state: false,
@@ -31,7 +31,7 @@ function MapControl() {
     setTempleDetailData({
       state: false,
     });
-    handleToggleTempleList()
+    handleToggleTempleList(false)
 
     map.flyTo(data.coordenadas, 16, { duration: 1.5 }),
       setTimeout(() => {

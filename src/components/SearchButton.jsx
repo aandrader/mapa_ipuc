@@ -5,7 +5,7 @@ function SearchButton({ toggleTempleList }) {
     <div className="search-button-container">
       <a
         onClick={() => {
-          toggleTempleList();
+          toggleTempleList(true);
         }}
       >
         <img
