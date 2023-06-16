@@ -1,7 +1,11 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="800px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier"> <path fill="#f0ab00" d="M32,0C18.746,0,8,10.746,8,24c0,5.219,1.711,10.008,4.555,13.93c0.051,0.094,0.059,0.199,0.117,0.289l16,24 C29.414,63.332,30.664,64,32,64s2.586-0.668,3.328-1.781l16-24c0.059-0.09,0.066-0.195,0.117-0.289C54.289,34.008,56,29.219,56,24 C56,10.746,45.254,0,32,0z M32,32c-4.418,0-8-3.582-8-8s3.582-8,8-8s8,3.582,8,8S36.418,32,32,32z"/> </g>
-</svg>
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" fill="#000000" xml:space="preserve" enable-background="new 0 0 64 64" version="1.0">
+
+ <g>
+  <title>Layer 1</title>
+  <g stroke-width="0" id="SVGRepo_bgCarrier"/>
+  <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"/>
+  <g stroke="null" id="SVGRepo_iconCarrier">
+   <path stroke="null" id="svg_1" d="m14.86715,2.331c-5.46586,0 -9.89745,4.32721 -9.89745,9.66435c0,2.10159 0.70561,4.03003 1.87845,5.60935c0.02103,0.03785 0.02433,0.08013 0.04825,0.11637l6.5983,9.66435c0.306,0.44818 0.82149,0.71718 1.37245,0.71718s1.06645,-0.26899 1.37245,-0.71718l6.5983,-9.66435c0.02433,-0.03624 0.02722,-0.07852 0.04825,-0.11637c1.17285,-1.57932 1.87845,-3.50776 1.87845,-5.60935c0,-5.33714 -4.43158,-9.66435 -9.89745,-9.66435zm0,12.8858c-1.82195,0 -3.29915,-1.4424 -3.29915,-3.22145s1.47719,-3.22145 3.29915,-3.22145s3.29915,1.4424 3.29915,3.22145s-1.47719,3.22145 -3.29915,3.22145z" fill="#f0ab00"/>
+  </g>
+ </g>
+</svg>

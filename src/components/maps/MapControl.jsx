@@ -8,6 +8,10 @@ import { getTemples, templeIcon, locationIcon } from "../../utils/data";
 
 function MapControl() {
   const [userLocation, setUserLocation] = useState([false]);
+  const [templeListOpen, setTempleListOpen] = useState(false);
+  const handleToggleTempleList = () => {
+    setTempleListOpen(!templeListOpen);
+  };
   const [templeDetail, setTempleDetailData] = useState({
     state: false,
     data: {
@@ -23,9 +27,11 @@ function MapControl() {
   }
 
   function openTempleDetail(data) {
+
     setTempleDetailData({
       state: false,
     });
+    handleToggleTempleList()
 
     map.flyTo(data.coordenadas, 16, { duration: 1.5 }),
       setTimeout(() => {
@@ -63,14 +69,16 @@ function MapControl() {
           templeData={templeDetail.data}
         />
       )}
-      <SearchButton />
-      {
+      <SearchButton toggleTempleList={handleToggleTempleList} />
+      { (
         <TemplesList
           map={map}
           userLocation={userLocation}
           openTempleDetail={openTempleDetail}
+          isOpen={templeListOpen}
+          toggleTempleList={handleToggleTempleList}
         />
-      }
+      )}
     </>
   );
 }
