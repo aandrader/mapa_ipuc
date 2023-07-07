@@ -40,6 +40,31 @@ html, body{
   color:aliceblue;
 }
 
+.youtubeButton,
+.youtubeButton:active,
+.youtubeButton:focus{
+  background-color: #ff0000 ;
+  width: 100%;
+  margin: 3px;
+}
+
+.facebookButton,
+.facebookButton:active,
+.facebookButton:focus,
+.facebookButton:hover{
+  background-color: #1b74e4 ;
+  width: 100%;
+  margin: 3px;
+}
+
+.pageButton,
+.pageButton:active,
+.pageButton:focus{
+  background-color: #676767 ;
+  width: 100%;
+  margin: 3px;
+}
+
 #map-container{
 
     font-family : inherit;

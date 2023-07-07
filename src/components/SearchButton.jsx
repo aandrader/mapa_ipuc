@@ -1,27 +1,17 @@
-import PropTypes from "prop-types";
-
-function SearchButton({ toggleTempleList }) {
-  return (
-    <div className="search-button-container">
-      <a
-        onClick={() => {
-          toggleTempleList(true);
-        }}
-      >
-        <img
-          src="/SearchIcon.svg"
-          alt="Logo"
-          width="50"
-          height="40"
-          className="d-inline-block align-text-top"
-        />
-      </a>
-    </div>
-  );
+function SearchButton(){
+  return(
+      <div className="search-button-container">
+    <a
+      data-bs-toggle="offcanvas"
+      href="#templeList"
+      role="button"
+      aria-controls="offcanvasExample"
+    >
+     <img src="/SearchIcon.svg" alt="Logo" width="50" height="40" className="d-inline-block align-text-top" />
+    </a>
+          </div>
+  )
 }
 
-SearchButton.propTypes = {
-  toggleTempleList: PropTypes.func.isRequired,
-};
-
 export default SearchButton;
+

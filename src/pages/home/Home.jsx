@@ -5,8 +5,9 @@ function Home() {
 
   return (
     <>
-      <MapView/>
-      <Instructive></Instructive>
+    <Instructive/>
+    <MapView/>
+      
 
     </>
   );
