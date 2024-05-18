@@ -10,7 +10,8 @@ export const metadata: Metadata = {
     default: "Mapa Ipuc",
     template: "Mapa Ipuc %s",
   },
-  description: "Mapa de las congregaciones de la Iglesia Pentecostal Unida de Colombia",
+  description:
+    "Mapa de las congregaciones, iglesias, templos o lugares de culto de la Iglesia Pentecostal Unida de Colombia ubicados en Medellín, Bello, Copacabana, Itagüí, Sabaneta, Envigado, San Antonio de Prado, La Estrella, San Cristobal. ",
 };
 
 export default function RootLayout({

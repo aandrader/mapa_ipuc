@@ -6,6 +6,7 @@ import { templeIcon } from "@/utils/leafletIcons";
 export const Markers = () => {
   const router = useRouter();
   const markersObject = getTemples();
+  const map = useMap();
 
   return Object.entries(markersObject).map(([templeId, temple]) => (
     <Marker
@@ -14,6 +15,7 @@ export const Markers = () => {
       eventHandlers={{
         click: () => {
           router.push(`/${templeId}`);
+          map.flyTo(temple.coordenadas, 16, { duration: 1.5 });
         },
       }}
       key={temple.congregacion + temple.municipio + temple.distrito}

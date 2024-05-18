@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: TemplePageProps): Promise<Met
   const templesData = getTemples();
   const templeData = templesData[params.templeID];
   return {
-    title: templeData.congregacion,
+    title: "iglesia " + templeData.congregacion,
+    description: `Ruta para ir a la congregación de ${templeData.congregacion} ubicado en ${templeData.municipio} de la Iglesia Pentecostal Unida de Colombia. Información sobre redes sociales, Facebook, Youtube, página Web y horarios de culto. Rutas a templos cercanos.`,
   };
 }
 

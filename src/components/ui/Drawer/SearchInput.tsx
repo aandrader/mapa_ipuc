@@ -16,7 +16,7 @@ export const SearchInput = ({ templesArray, setFilteredTemples }: SearchInputPro
   };
   return (
     <input
-      className="grow px-4 rounded-md border border-solid border-gray-300  focus:outline focus:outline-blue-ipuc-700"
+      className=" w-[100%] px-4 rounded-md border border-solid border-gray-300  focus:outline focus:outline-blue-ipuc-700"
       onChange={(e) => {
         filterTempleArray(e.target.value);
       }}
