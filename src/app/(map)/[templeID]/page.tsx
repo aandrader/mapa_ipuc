@@ -4,6 +4,8 @@ import { getTemples } from "@/utils/maps";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-static";
+
 export async function generateStaticParams() {
   const templesData = getTemples();
   return Object.keys(templesData);

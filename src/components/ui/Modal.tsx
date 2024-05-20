@@ -1,12 +1,12 @@
 import { templeDataType } from "@/data/templeTypes";
 import Link from "next/link";
-import { CloseIcon, MapsIcon } from "@/components/ui/Icons";
+import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/ui/Icons";
 import Image from "next/image";
+import { IconButton } from "./IconButton";
 import { defaultSchedule } from "@/data/defaultSchedule";
-import { FacebookIcon, WebIcon, YoutubeIcon } from "@/components/ui/Icons";
-import { IconButton } from "@/components/ui/IconButton";
 
 export const Modal = ({ templeData }: { templeData: templeDataType }) => {
+  console.log("side");
   const schedule = templeData.horarios.length === 0 ? defaultSchedule : templeData.horarios;
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
@@ -37,8 +37,8 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
     </div>
   );
   return (
-    <div className="absolute left-5 top-1/2 translate-y-[-50%] bg-white rounded-3xl border border-solid border-gray-300 w-[300px] lg:w-fit h-fit  z-[1000] overflow-hidden ">
-      <div className="overflow-auto h-full box-content max-h-[95vh] ">
+    <div className="absolute left-5 top-1/2 translate-y-[-50%] bg-white rounded-3xl border border-solid border-gray-300 w-[300px] z-[1000] overflow-hidden ">
+      <div className="overflow-auto  lg:w-fit h-fit box-content max-h-[95vh] ">
         <Link className="absolute right-0 translate-y-[25%] translate-x-[-25%]" href={"/"}>
           <CloseIcon />
         </Link>
