@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://mapaipuc.vercel.app/sitemap.xml",
+    sitemap: "https://mapaipuc.info/sitemap.xml",
   };
 }

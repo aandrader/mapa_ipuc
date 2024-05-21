@@ -8,7 +8,7 @@ const googleFont = Poppins({ subsets: ["latin"], weight: ["400", "500"] });
 export const metadata: Metadata = {
   title: {
     default: "Mapa Ipuc - Iglesia Pentecostal Unida de Colombia",
-    template: "Mapa Ipuc %s",
+    template: "%s - Mapa Ipuc",
   },
   description:
     "Mapa de las congregaciones, iglesias, templos o lugares de culto de la Iglesia Pentecostal Unida de Colombia ubicados en Medellín, Bello, Copacabana, Itagüí, Sabaneta, Envigado, San Antonio de Prado, La Estrella, San Cristobal. ",

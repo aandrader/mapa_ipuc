@@ -6,7 +6,6 @@ import { IconButton } from "./IconButton";
 import { defaultSchedule } from "@/data/defaultSchedule";
 
 export const Modal = ({ templeData }: { templeData: templeDataType }) => {
-  console.log("side");
   const schedule = templeData.horarios.length === 0 ? defaultSchedule : templeData.horarios;
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
