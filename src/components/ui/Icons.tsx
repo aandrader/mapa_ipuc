@@ -1,4 +1,4 @@
-import { ReactSVGElement, SVGProps } from "react";
+import { SVGProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 export const CloseIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
@@ -7,12 +7,27 @@ export const CloseIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      strokeWidth={2}
       stroke="currentColor"
-      className={twMerge("w-9 h-9 cursor-pointer", className)}
+      className={twMerge("size-9 cursor-pointer", className)}
       {...props}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
+  );
+};
+
+export const BackIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      className={twMerge("size-8 cursor-pointer", className)}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="#5577B3"
+      {...props}
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
     </svg>
   );
 };

@@ -13,11 +13,12 @@ export const Cards = ({ filteredTemples, setIsOpen }: CardsProps) => {
   const router = useRouter();
   const { map } = useMapContext();
   return (
-    <div className="grid auto-rows-min grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center  overflow-y-scroll h-[calc(100%-(68px+16px))] px-4 gap-2  ">
+    <div className="grid auto-rows-min grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center  overflow-y-scroll h-[calc(100%-(43px+16px))] px-4 pt-4 mt-[1px] gap-2    ">
       {filteredTemples?.map(([templeID, temple]) => (
         <Card
           onClick={() => {
             router.push("/" + templeID);
+            // if (window.innerWidth <= 640)
             setIsOpen((isOpen: boolean) => !isOpen);
             map.flyTo(temple.coordenadas, 16, { duration: 1.5 });
           }}

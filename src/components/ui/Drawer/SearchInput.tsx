@@ -1,5 +1,4 @@
 import { templeDataType } from "@/data/templeTypes";
-import { getSortedTemples, getTemples } from "@/utils/maps";
 import { filterTemples, removeAccents } from "@/utils/utils";
 import { Dispatch, SetStateAction, useRef } from "react";
 
@@ -17,7 +16,7 @@ export const SearchInput = ({ templesArray, setFilteredTemples }: SearchInputPro
   };
   return (
     <input
-      className=" w-[100%] px-4 rounded-md border border-solid border-gray-300  focus:outline focus:outline-blue-ipuc-700"
+      className="size-full pr-4 pl-[50px] py-2 rounded-md border border-solid border-gray-300 outline-none focus:border-blue-ipuc-700 focus:rounded-b-none "
       onChange={(e) => {
         filterTempleArray(e.target.value);
       }}
