@@ -15,7 +15,7 @@ export const IconButton = ({ children, href, className = "" }: IconButtonProps) 
         className
       )}
       target="_blank"
-      rel="noreferrer"
+      rel="external"
       href={href}
     >
       {children}

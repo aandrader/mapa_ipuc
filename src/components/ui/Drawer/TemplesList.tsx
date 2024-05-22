@@ -29,7 +29,7 @@ export const TemplesList = ({ isOpen, setIsOpen }: TemplesListProps) => {
   return (
     <>
       <header onClick={() => setIsOpen(true)} className="flex gap-4 justify-between visible relative">
-        <SearchInput templesArray={sortedTemples} setFilteredTemples={setFilteredTemples} />
+        <SearchInput isOpen={isOpen} templesArray={sortedTemples} setFilteredTemples={setFilteredTemples} />
         {inputIcon}
       </header>
       <Cards filteredTemples={filteredTemples} setIsOpen={setIsOpen} />

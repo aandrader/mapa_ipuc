@@ -1,4 +1,4 @@
-import { Modal } from "@/components/ui/Modal";
+import { Modal } from "@/components/ui/Modal/Modal";
 import { type templeIdType } from "@/data/templeTypes";
 import { getTemples } from "@/utils/maps";
 import { Metadata } from "next";

@@ -2,8 +2,9 @@ import { templeDataType } from "@/data/templeTypes";
 import Link from "next/link";
 import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/ui/Icons";
 import Image from "next/image";
-import { IconButton } from "./IconButton";
+import { IconButton } from "../IconButton";
 import { defaultSchedule } from "@/data/defaultSchedule";
+import { ClientButtons } from "./ClientButtons";
 
 export const Modal = ({ templeData }: { templeData: templeDataType }) => {
   const schedule = templeData.horarios.length === 0 ? defaultSchedule : templeData.horarios;
@@ -20,16 +21,16 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
         </IconButton>
       )}
       {templeData.pagina && (
-        <IconButton className="bg-gray-400" href={templeData.pagina}>
+        <IconButton className="bg-gray-400 hover:bg-gray-500" href={templeData.pagina}>
           <WebIcon />
         </IconButton>
       )}
     </div>
   );
   const schedules = (
-    <div className="text-[13px] lg:text-[16px]">
+    <div className="flex justify-center items-start flex-col">
       {schedule.map((service) => (
-        <li className="font-medium" key={service.dia}>
+        <li className="font-medium " key={service.dia}>
           <b>{service.dia}</b>: {service.hora}
         </li>
       ))}
@@ -53,6 +54,7 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
           {schedules}
           {anchors}
         </div>
+        <ClientButtons />
         <div className="grid place-items-center p-3 border-t border-solid border-gray-300 sticky bottom-0 bg-white">
           <IconButton
             className="w-[100%] font-medium bg-gradient-to-r from-blue-ipuc-700 to-blue-500  "
