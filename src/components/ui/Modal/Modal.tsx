@@ -37,7 +37,7 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
     </div>
   );
   return (
-    <div className="absolute left-5 top-1/2 translate-y-[-50%] bg-white rounded-3xl border border-solid border-gray-300 w-[300px] z-[1000] overflow-hidden ">
+    <div className="absolute card absolute-center-y left-5 w-[300px] z-[1000] overflow-hidden">
       <div className="overflow-auto  lg:w-fit h-fit box-content max-h-[95vh] ">
         <Link className="absolute right-0 translate-y-[25%] translate-x-[-25%]" href={"/"}>
           <CloseIcon />

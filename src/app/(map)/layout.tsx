@@ -8,11 +8,7 @@ export default function MapsLayout({ children }: { children: React.ReactNode }) 
   const MapWrapper = useMemo(
     () =>
       dynamicImport(() => import("@/components/maps/MapWrapper"), {
-        loading: () => (
-          <div className="w-screen h-screen">
-            <p>Cargando mapa...</p>
-          </div>
-        ),
+        loading: () => <div className=" skeleton w-screen h-screen"></div>,
         ssr: false,
       }),
     []
