@@ -9,8 +9,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // "blue-ipuc-900": "#224073",
-        // "blue-ipuc-700": "#00338d",
         "blue-ipuc": {
           "100": "#DFE6F1",
           "200": "#BFCCE3",

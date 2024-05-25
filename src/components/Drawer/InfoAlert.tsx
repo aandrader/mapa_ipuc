@@ -1,8 +1,10 @@
+import { useUserLocation } from "@/context/UserLocationContext";
 import { InfoIcon, LocationIcon } from "../Icons";
-import { useMapContext } from "@/context/MapContext";
+import { useMap } from "@/context/MapContext";
 
 export const InfoAlert = () => {
-  const { userLocation, map } = useMapContext();
+  const map = useMap();
+  const { userLocation } = useUserLocation();
   const divClass =
     "flex gap-2 text-blue-ipuc-500 items-center w-full rounded-lg bg-blue-ipuc-100 p-2 text-sm";
 

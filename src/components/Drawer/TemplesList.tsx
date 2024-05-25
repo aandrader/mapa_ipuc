@@ -3,6 +3,8 @@ import { SearchInput } from "./SearchInput";
 import { BackIcon, MapsIcon } from "../Icons";
 import { Cards } from "./Cards";
 import { useTemples } from "@/hooks/useTemples";
+import { publish } from "@/utils/events";
+import { Welcome } from "../Dialogs/Welcome";
 
 interface TemplesListProps {
   isOpen: boolean;
@@ -21,15 +23,18 @@ export const TemplesList = ({ isOpen, setIsOpen }: TemplesListProps) => {
       }}
     />
   ) : (
-    <div className="absolute left-[calc((50px-32px)/2)] top-[calc((42px-32px)/2)]   rounded-full bg-gradient-to-r from-blue-ipuc-700 to-blue-500 p-1    ">
-      <MapsIcon className="size-[24px]" />
-    </div>
+    <Welcome />
   );
 
   return (
     <>
-      <header onClick={() => setIsOpen(true)} className="flex gap-4 justify-between visible relative">
-        <SearchInput isOpen={isOpen} templesArray={sortedTemples} setFilteredTemples={setFilteredTemples} />
+      <header className="flex gap-4 justify-between visible relative">
+        <SearchInput
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          templesArray={sortedTemples}
+          setFilteredTemples={setFilteredTemples}
+        />
         {inputIcon}
       </header>
       <Cards filteredTemples={filteredTemples} setIsOpen={setIsOpen} />
