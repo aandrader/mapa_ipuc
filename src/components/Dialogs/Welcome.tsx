@@ -53,7 +53,7 @@ export const Welcome = () => {
           Su ubicación actual se marcará con un
           <IconUserLocation />
         </p>
-        <p className="underline text-blue-ipuc-200" onClick={() => publish("openDialog")}>
+        <p className="underline text-blue-ipuc-200 cursor-pointer" onClick={() => publish("openDialog")}>
           ¿Falta su iglesia? Contactarse.
         </p>
       </div>
