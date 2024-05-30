@@ -26,12 +26,12 @@ export const Welcome = () => {
         ref={welcomeRef}
         className={`${
           isOpen ? "" : "hidden"
-        } absolute top-[60px] w-[350px] max-w-full text-xs leading-5 text-blue-ipuc-100 bg-gradient-to-r from-blue-ipuc-700 to-blue-600 above-map tooltip-arrow rounded-xl p-4`}
+        } absolute top-[60px] w-[350px] max-w-full text-xs leading-5 text-blue-ipuc-200 bg-gradient-to-r from-blue-ipuc-700 to-blue-600 above-map tooltip-arrow rounded-xl p-4`}
       >
         <div className="flex justify-between items-center mb-1">
           <h3 className="text-base font-medium leading-5">¡Bienvenido a Mapa Ipuc!</h3>
           <CloseIcon
-            onClick={(e) => {
+            onClick={() => {
               setIsOpen(false);
             }}
             className="size-7 cursor-pointer"
@@ -39,7 +39,7 @@ export const Welcome = () => {
         </div>
         <p>
           Un mapa interactivo con las congregaciones de la{" "}
-          <a className="underline text-blue-ipuc-200" href="https://ipuc.org.co/">
+          <a className="underline text-blue-ipuc-100" href="https://ipuc.org.co/">
             Iglesia Pentecostal Unida de Colombia{" "}
           </a>
           ubicadas en el Valle de Aburrá.
@@ -54,7 +54,7 @@ export const Welcome = () => {
           <IconUserLocation />
         </p>
         <p className="underline text-blue-ipuc-200" onClick={() => publish("openDialog")}>
-          ¿Falta su iglesia? Agregar nueva congregación.
+          ¿Falta su iglesia? Contacto.
         </p>
       </div>
     </>

@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         "blue-ipuc": {
-          "100": "#DFE6F1",
-          "200": "#BFCCE3",
-          "300": "#9FB3D4",
+          "100": "#EFF3F8",
+          "200": "#E4EAF3",
+          "300": "#BFCCE3",
           "400": "#8099C6",
           "500": "#6080B8",
           "600": "#4066AA",

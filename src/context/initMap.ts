@@ -13,17 +13,17 @@ const initialView = (templesData: any) => {
         resolve([[pos.coords.latitude, pos.coords.longitude], 13]);
       },
       () => resolve([[6.23, -75.58], 13]),
-      { timeout: 50 }
+      { timeout: 200 }
     );
   });
 };
 
 export const initMap = async ({ L, router, setMap, setUserLocation }: any) => {
-  const mapDiv = document.getElementById("map");
-  mapDiv?.classList.remove("skeleton");
-
   const templesData = getTemples();
   const [initialCoords, initialZoom] = await initialView(templesData);
+
+  const mapDiv = document.getElementById("map");
+  mapDiv?.classList.remove("skeleton");
 
   const map = L.map("map", { zoomControl: false }).setView(initialCoords, initialZoom) as Map;
 
