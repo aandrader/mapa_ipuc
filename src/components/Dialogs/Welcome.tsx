@@ -54,7 +54,7 @@ export const Welcome = () => {
           <IconUserLocation />
         </p>
         <p className="underline text-blue-ipuc-200" onClick={() => publish("openDialog")}>
-          ¿Falta su iglesia? Contacto.
+          ¿Falta su iglesia? Contactarse.
         </p>
       </div>
     </>
