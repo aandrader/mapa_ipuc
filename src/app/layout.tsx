@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { Welcome } from "@/components/Dialogs/Welcome";
 import { Dialog } from "@/components/Dialogs/Dialog";
 
 const googleFont = Poppins({ subsets: ["latin"], weight: ["400", "500"] });
@@ -27,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={googleFont.className + " relative"}>
-        {/* <Navbar /> */}
         {children}
         <Dialog />
         <Analytics />

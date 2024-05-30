@@ -1,6 +1,6 @@
 import { templeDataType } from "@/data/templeTypes";
 import { filterTemples, removeAccents } from "@/utils/utils";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface SearchInputProps {
   templesArray: [string, templeDataType][] | undefined;

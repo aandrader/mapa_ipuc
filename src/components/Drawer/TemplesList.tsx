@@ -1,9 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { SearchInput } from "./SearchInput";
-import { BackIcon, MapsIcon } from "../Icons";
+import { BackIcon } from "../Icons";
 import { Cards } from "./Cards";
 import { useTemples } from "@/hooks/useTemples";
-import { publish } from "@/utils/events";
 import { Welcome } from "../Dialogs/Welcome";
 
 interface TemplesListProps {

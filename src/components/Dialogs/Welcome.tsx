@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../Icons";
-import Image from "next/image";
 import { useBackdrop } from "@/hooks/useBackdrop";
+import { publish } from "@/utils/events";
 
 let firstEnter = true;
 
 export const Welcome = () => {
-  const [isOpen, setIsOpen] = useState(firstEnter ? true : false);
+  const [isOpen, setIsOpen] = useState(typeof window === "undefined" || firstEnter);
   firstEnter = false;
   const welcomeRef = useBackdrop(setIsOpen);
   return (
@@ -33,7 +33,6 @@ export const Welcome = () => {
           <CloseIcon
             onClick={(e) => {
               setIsOpen(false);
-              // e.stopPropagation();
             }}
             className="size-7 cursor-pointer"
           />
@@ -47,28 +46,16 @@ export const Welcome = () => {
         </p>
         <p>
           Seleccione el icono
-          {/* <Image
-            className="inline mx-2"
-            src={"/ChurchMarker.svg"}
-            height={20}
-            width={20}
-            alt="Icono Iglesia"
-          /> */}
           <IconChurch />
           para ver la ruta, los horarios y redes del templo.
         </p>
         <p>
           Su ubicación actual se marcará con un
-          {/* <Image
-            className="inline mx-2"
-            src={"/LocationMarker.svg"}
-            height={15}
-            width={15}
-            alt="Icono Iglesia"
-          /> */}
           <IconUserLocation />
         </p>
-        <p></p>
+        <p className="underline text-blue-ipuc-200" onClick={() => publish("openDialog")}>
+          ¿Falta su iglesia? Agregar nueva congregación.
+        </p>
       </div>
     </>
   );
