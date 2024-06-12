@@ -14,7 +14,7 @@ export const Dialog = () => {
     return () => {
       unsubscribe("openDialog", () => setIsOpen(true));
     };
-  });
+  }, []);
   return isOpen ? (
     <div className="absolute top-0 right-0 w-screen h-screen bg-blur above-map ">
       <div ref={dialogRef} className={`absolute absolute-center text-[15px] z-[9000] card p-5 w-[300px] `}>

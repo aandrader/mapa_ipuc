@@ -54,7 +54,7 @@ export const Welcome = () => {
           <IconUserLocation />
         </p>
         <p className="underline text-blue-ipuc-200 cursor-pointer" onClick={() => publish("openDialog")}>
-          ¿Falta su iglesia? Contactarse.
+          ¿Falta su congregación o desea modificarla? Contactarse.
         </p>
       </div>
     </>
