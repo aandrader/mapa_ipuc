@@ -1,13 +1,14 @@
+import { getTemples } from "@/utils/db";
 import { Modal } from "@/components/Modal/Modal";
 import { type templeIdType } from "@/data/templeTypes";
-import { getTemples } from "@/utils/maps";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { fetchTemples } from "@/app/db/db";
 
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
-  const templesData = getTemples();
+  const templesData = await fetchTemples();
   return Object.keys(templesData);
 }
 
@@ -16,7 +17,7 @@ interface TemplePageProps {
 }
 
 export async function generateMetadata({ params }: TemplePageProps): Promise<Metadata> {
-  const templesData = getTemples();
+  const templesData = await fetchTemples();
   const templeData = templesData[params.templeID];
   return {
     title: "Iglesia " + templeData.congregacion,
@@ -24,8 +25,9 @@ export async function generateMetadata({ params }: TemplePageProps): Promise<Met
   };
 }
 
-export default function NamePage({ params }: TemplePageProps) {
-  const templesData = getTemples();
+export default async function TemplePage({ params }: TemplePageProps) {
+  const templesData = await fetchTemples();
+
   const templeData = templesData[params.templeID];
   if (!templeData) redirect("/");
 

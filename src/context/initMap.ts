@@ -1,7 +1,8 @@
-import { getTemples } from "@/utils/maps";
+import { getTemples } from "@/utils/db";
 import { templeIdType } from "@/data/templeTypes";
 import { churchMarker, locationMarker } from "@/utils/markersRaw";
 import { Map } from "leaflet";
+import { templeDataType } from "../data/templeTypes";
 
 const initialView = (templesData: any) => {
   if (location.pathname !== "/") {
@@ -19,7 +20,7 @@ const initialView = (templesData: any) => {
 };
 
 export const initMap = async ({ L, router, setMap, setUserLocation }: any) => {
-  const templesData = getTemples();
+  const templesData = await getTemples();
   const [initialCoords, initialZoom] = await initialView(templesData);
 
   const mapDiv = document.getElementById("map");
@@ -34,7 +35,7 @@ export const initMap = async ({ L, router, setMap, setUserLocation }: any) => {
       '&copy; <&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   }).addTo(map);
 
-  for (const [templeID, templeData] of Object.entries(templesData)) {
+  for (const [templeID, templeData] of Object.entries(templesData) as any) {
     const icon = L.divIcon({ html: churchMarker, className: "" });
     const marker = L.marker(templeData.coordenadas, { icon: icon }).on("click", () => {
       router.push(`/${templeID}`);

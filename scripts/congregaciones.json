@@ -1,0 +1,962 @@
+{
+  "12-de-octubre-medellin": {
+    "congregacion": "12 De Octubre",
+    "coordenadas": [6.296555951971637, -75.57999160671986],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUC12/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "20-de-julio-medellin": {
+    "congregacion": "20 de Julio",
+    "coordenadas": [6.2524433, -75.6227306],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucveintedejuliomedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "https://www.ipuc20dejuliomedellin.com/",
+    "youtube": "https://www.youtube.com/user/20dejuliomedellin"
+  },
+  "4-esquinas-medellin": {
+    "congregacion": "4 Esquinas",
+    "coordenadas": [6.2507493, -75.6288003],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/IPUC-Cuatro-Esquinas/100071070132237/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "  ",
+    "youtube": "https://www.youtube.com/channel/UCkq7tasrThSC5SoFUg89Eyw"
+  },
+  "alfonso-lopez-medellin": {
+    "congregacion": "Alfonso López",
+    "coordenadas": [6.285504174412916, -75.57683708505762],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUC-Alfonso-L%C3%B3pez-Medell%C3%ADn-103580191228402/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCeYZI6zx83wX_mMbwdk7d1w?"
+  },
+  "altos-de-niquia-bello": {
+    "congregacion": "Altos de Niquia",
+    "coordenadas": [6.349386732643927, -75.55002942684717],
+    "distrito": 22,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCUKJY9SYCHjLk5SMvvPvVoA"
+  },
+  "aranjuez-berlin-medellin": {
+    "congregacion": "Aranjuez Berlin",
+    "coordenadas": [6.285468346518325, -75.55343590991917],
+    "distrito": 22,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucmedellinaranjuezberlin8313/streams"
+  },
+  "aranjuez-medellin": {
+    "congregacion": "Aranjuez",
+    "coordenadas": [6.2827914, -75.5575603],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuc.aranjuez/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "barichara-san-antonio-de-prado": {
+    "congregacion": "Barichara",
+    "coordenadas": [6.17328586287662, -75.65372107436302],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/Iglesia-Pentecostal-Unida-BARICHARA-100064749786311/",
+    "horarios": [],
+    "municipio": "San Antonio de Prado",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucbarichara7158"
+  },
+  "barrio-nuevo-bello": {
+    "congregacion": "Barrio Nuevo",
+    "coordenadas": [6.313451660391516, -75.5683898236447],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUCBARRIONUEVO/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucbarrionuevo"
+  },
+  "belalcazar-medellin": {
+    "congregacion": "Belalcazar",
+    "coordenadas": [6.2960763154913515, -75.56583359619812],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/Ipuc-Belalcazar/100069005591116/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "belen-central-medellin": {
+    "congregacion": "Belén Central",
+    "coordenadas": [6.2264582, -75.5963476],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/belencentral/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/user/belencentral"
+  },
+  "belen-fatima-medellin": {
+    "congregacion": "Belén Fátima",
+    "coordenadas": [6.2397582, -75.5879864],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucbelenfatima",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCAUvhnGm2F1HQQ3RiCu8XmQ"
+  },
+  "belen-rincon-medellin": {
+    "congregacion": "Belén Rincón",
+    "coordenadas": [6.213574887901767, -75.60174953021325],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/belenrinconipuc/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "bello-central-bello": {
+    "congregacion": "Bello Central",
+    "coordenadas": [6.336026, -75.5528254],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucbellocentral/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@IpucBelloCentral"
+  },
+  "bello-horizonte-medellin": {
+    "congregacion": "Bello Horizonte",
+    "coordenadas": [6.288120301759183, -75.59144860789571],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/Ipuc-Bello-Horizonte-100067840310543/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "bello-oriente-medellin": {
+    "congregacion": "Bello Oriente",
+    "coordenadas": [6.278119288974686, -75.53855073841149],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucbellooriented9/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "blanquizal-olaya-herrera-medellin": {
+    "congregacion": "Blanquizal Olaya Herrera",
+    "coordenadas": [6.274342837745162, -75.60426197917273],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IpucblanquizalM/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/c/IPUCCaldasCentral"
+  },
+  "buenos-aires-medellin": {
+    "congregacion": "Buenos Aires",
+    "coordenadas": [6.235267587534039, -75.54825985758946],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IpucBuenosAiresMedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucbuenosaires-medellin8252/"
+  },
+  "calatrava-itagui": {
+    "congregacion": "Calatrava",
+    "coordenadas": [6.178311228837231, -75.6103349656636],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/iipuc.calatrava/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "http://www.laradio.com.co/",
+    "youtube": ""
+  },
+  "calazans-medellin": {
+    "congregacion": "Calazans",
+    "coordenadas": [6.2662719909159375, -75.59798154848248],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/Ipuc-Calasanz-100086864447666/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "campo-valdes-medellin": {
+    "congregacion": "Campo Valdes",
+    "coordenadas": [6.267010544923201, -75.55917109259853],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IPUCCampoValdesMed/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/user/ipuccampovaldes"
+  },
+  "carambolas-medellin": {
+    "congregacion": "Carambolas",
+    "coordenadas": [6.2848930645708965, -75.5387121858525],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuccarambolasoficial/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipuccarambolasoficial/featured"
+  },
+  "castilla-medellin": {
+    "congregacion": "Castilla",
+    "coordenadas": [6.292257818951505, -75.57404541943606],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUC.Castilla/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "cinco-estrellas-bello": {
+    "congregacion": "Cinco Estrellas",
+    "coordenadas": [6.326538668952543, -75.54264321102104],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuclacamila5estrellas/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCW0Ep5_CkKbA25dYcIW1hyQ"
+  },
+  "copacabana-copacabana": {
+    "congregacion": "Copacabana",
+    "coordenadas": [6.347794292606531, -75.51104853272189],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/Ipuccopa/",
+    "horarios": [],
+    "municipio": "Copacabana",
+    "pagina": "",
+    "youtube": ""
+  },
+  "cristo-rey-medellin": {
+    "congregacion": "Cristo Rey",
+    "coordenadas": [6.203468635996978, -75.5836639453826],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IPUC-Cristo-Rey-Medellin-1608181686116765/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "el-cafetal-bello": {
+    "congregacion": "El Cafetal",
+    "coordenadas": [6.314604483100596, -75.5766142432584],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/IPUC-El-Cafetal-Bello/100080255042879/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/c/IPUCCAFETALBELLO"
+  },
+  "el-chispero-medellin": {
+    "congregacion": "El Chispero",
+    "coordenadas": [6.306940892226096, -75.5782532564463],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucchispero.oficial/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "el-diamante-medellin": {
+    "congregacion": "El Diamante",
+    "coordenadas": [6.283630766317381, -75.58527073457881],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/Decom-Ipuc-el-diamante-100064056157935/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "el-faro-medellin": {
+    "congregacion": "El Faro",
+    "coordenadas": [6.254072842223424, -75.53809178041746],
+    "distrito": 9,
+    "facebook": "https://es-la.facebook.com/ipuc.faro",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "el-jardin-medellin": {
+    "congregacion": "El Jardín",
+    "coordenadas": [6.2363287, -75.6084462],
+    "distrito": 22,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "el-pinar-bello": {
+    "congregacion": "El Pinar",
+    "coordenadas": [6.302711953528573, -75.53587012063893],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucelpinar/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCZU9jyyNfNCrOC8C89bdKtg"
+  },
+  "el-playon-medellin": {
+    "congregacion": "El Playón",
+    "coordenadas": [6.3064194, -75.5538564],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucplayonmedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucelplayon5208/featured"
+  },
+  "el-poblado-medellin": {
+    "congregacion": "El Poblado",
+    "coordenadas": [6.204345704655326, -75.57105890596853],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucelpobladomedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCBjvuRSOQQW_bTC6NjCGZYw"
+  },
+  "el-porvenir-bello": {
+    "congregacion": "El Porvenir",
+    "coordenadas": [6.337806495641995, -75.56488374750437],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucporvenirbello/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCOakDGHEw79EKkFN3a_Yrog"
+  },
+  "el-porvenir-itagui": {
+    "congregacion": "El Porvenir",
+    "coordenadas": [6.195154965520548, -75.59787516300764],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ElPorvenirItagui/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucelporvenir1888/"
+  },
+  "el-salado-envigado": {
+    "congregacion": "El Salado",
+    "coordenadas": [6.157299723214669, -75.58063896400532],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/Elsaladoenvigado/",
+    "horarios": [],
+    "municipio": "Envigado",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/c/IPUCElSalado"
+  },
+  "el-triunfo-picacho-medellin": {
+    "congregacion": "El Triunfo Picacho",
+    "coordenadas": [6.3070073, -75.5845892],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/Ipuc-el-Triunfo/100067952383834/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "enciso-sucre-medellin": {
+    "congregacion": "Enciso Sucre",
+    "coordenadas": [6.248228293663549, -75.54678329478219],
+    "distrito": 9,
+    "facebook": "https://es-la.facebook.com/ipucencisos/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCqCVOtbxVOId9tjcNt-whDA"
+  },
+  "envigado-central-envigado": {
+    "congregacion": "Envigado Central",
+    "coordenadas": [6.1732548, -75.5785407],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/envigadocentral/",
+    "horarios": [],
+    "municipio": "Envigado",
+    "pagina": "",
+    "youtube": ""
+  },
+  "gaitan-medellin": {
+    "congregacion": "Gaitán",
+    "coordenadas": [6.290367522031404, -75.585198702156],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucgaitan/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "https://ipucgaitan.jimdofree.com/",
+    "youtube": "https://www.youtube.com/@IpucGaitan"
+  },
+  "granizal-medellin": {
+    "congregacion": "Granizal",
+    "coordenadas": [6.293814150846121, -75.54545651113571],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuc.granizal.10/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "juan-pablo-ll-medellin": {
+    "congregacion": "Juan Pablo ll",
+    "coordenadas": [6.229979569507336, -75.52839222569752],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuc.enjuanpabloii.9/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "kennedy-medellin": {
+    "congregacion": "Kennedy",
+    "coordenadas": [6.28824703146573, -75.58149693349779],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuckennedymed/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-america-medellin": {
+    "congregacion": "La América",
+    "coordenadas": [6.244228216911584, -75.61355105251636],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/pastorrobertorestrepo/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-avanzada-santo-domingo-medellin": {
+    "congregacion": "La Avanzada Santo Domingo",
+    "coordenadas": [6.2938804492012155, -75.53973610399845],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuc.laavanzada/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-campina-medellin": {
+    "congregacion": "La Campiña",
+    "coordenadas": [6.281518511470228, -75.60977448197818],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IpucCampina/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipuclacampina5550"
+  },
+  "la-colinita-medellin": {
+    "congregacion": "La Colinita",
+    "coordenadas": [6.201845670762114, -75.59370097060703],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuc.lacolinita/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UC51MTs3IIFWqVhv9jUQnrFw"
+  },
+  "la-cruz-itagui": {
+    "congregacion": "La Cruz",
+    "coordenadas": [6.166842277123375, -75.60355467716855],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuclacruzitagui/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-divisa-medellin": {
+    "congregacion": "La Divisa",
+    "coordenadas": [6.268123055431788, -75.61293434297959],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucdivisamedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-estrella-la-estrella": {
+    "congregacion": "La Estrella",
+    "coordenadas": [6.156180565761642, -75.64279225216175],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuclaestrellaant/",
+    "horarios": [],
+    "municipio": "La estrella",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCF5nBL5Nlia4Y3f8QJCrMiA"
+  },
+  "la-francia-medellin": {
+    "congregacion": "La Francia",
+    "coordenadas": [6.300458, -75.551352],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuclafranciamedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@Ipuclafranciamedellin/videos"
+  },
+  "la-gabriela-bello": {
+    "congregacion": "La Gabriela",
+    "coordenadas": [6.3193184, -75.548996],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/Ipuc-La-Gabriela/100070218822653/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-gran-avenida-bello": {
+    "congregacion": "La Gran Avenida",
+    "coordenadas": [6.3200561, -75.5600862],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/p/Ipuc-gran-avenida-100064720627227/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-iguana-medellin": {
+    "congregacion": "La Iguaná",
+    "coordenadas": [6.266882453564352, -75.58667364424858],
+    "distrito": 9,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-libertad-medellin": {
+    "congregacion": "La Libertad",
+    "coordenadas": [6.2408188549155765, -75.54247981075187],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuc.oficial.lalibertad/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-loma-medellin": {
+    "congregacion": "La Loma",
+    "coordenadas": [6.270122618274427, -75.63038354954534],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/IPUC-san-Javier-la-loma-medell%C3%ADn-100064435044232/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "la-milagrosa-medellin": {
+    "congregacion": "La Milagrosa",
+    "coordenadas": [6.235156263670273, -75.55716394663084],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IPUCLAMILAGROSA/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCHDMhnpVFeKm3B7_bSZGHBQ/"
+  },
+  "las-granjas-medellin": {
+    "congregacion": "Las Granjas",
+    "coordenadas": [6.278767509641117, -75.54917875920232],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuclasgranjasmed/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCqMBJnoEVv9gp-ajI2bpVtw"
+  },
+  "las-margaritas-medellin": {
+    "congregacion": "Las Margaritas",
+    "coordenadas": [6.276545893751024, -75.61788057171908],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/iPUClasmargaritas2018/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "las-violetas-medellin": {
+    "congregacion": "Las Violetas",
+    "coordenadas": [6.23403400693234, -75.61180531648033],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/IPUC-Las-Violetas/100079523857956/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucbelenlasvioletas/"
+  },
+  "laverde-san-antonio-de-prado": {
+    "congregacion": "Laverde",
+    "coordenadas": [6.186969571801301, -75.64122970627581],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/Ipuc-La-Verde-Medell%C3%ADn/pfbid0vVjMGM5NZNGSVECqEQeXQHfZF49jtZJnyDLNZsGfWSgire3hn8zFzSdnLjktwfA5l/",
+    "horarios": [],
+    "municipio": "San Antonio de Prado",
+    "pagina": "",
+    "youtube": ""
+  },
+  "llanaditas-medellin": {
+    "congregacion": "Llanaditas",
+    "coordenadas": [6.252242815694421, -75.5423352443377],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IpucLlan/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UC3kbRIOzZ3WaNYzyJzdZzuQ/"
+  },
+  "los-angeles-medellin": {
+    "congregacion": "Los Ángeles",
+    "coordenadas": [6.250524506825591, -75.55650010155873],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucla/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@IPUCLosAngelesMedellin"
+  },
+  "los-balsos-medellin": {
+    "congregacion": "Los Balsos",
+    "coordenadas": [6.292670054266523, -75.55217565442284],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/IPUC-Los-Balsos-Medellin/100068146765644/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "los-gomez-itagui": {
+    "congregacion": "Los Gomez",
+    "coordenadas": [6.192332438536056, -75.60734692605067],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipuclosgomez.itagui.75/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "",
+    "youtube": ""
+  },
+  "los-puentes-medellin": {
+    "congregacion": "Los Puentes",
+    "coordenadas": [6.243341270555435, -75.55455302577805],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/Ipuclospuentes9/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "los-sauces-bello": {
+    "congregacion": "Los Sauces",
+    "coordenadas": [6.31465879995913, -75.58598047048247],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucsaucesbello/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": ""
+  },
+  "machado-copacabana": {
+    "congregacion": "Machado",
+    "coordenadas": [6.334338440172182, -75.5332373156707],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucmachado1/",
+    "horarios": [],
+    "municipio": "Copacabana",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCGht_5ClkTVSCUI2P0PPyHg"
+  },
+  "manrique-santa-ines-medellin": {
+    "congregacion": "Manrique Santa Inés",
+    "coordenadas": [6.271180990443088, -75.54741439225154],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuc.s.ines/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCmDRyxD3R4rjV8LgI7Q1UxQ"
+  },
+  "medellin-central-medellin": {
+    "congregacion": "Medellin Central",
+    "coordenadas": [6.258023601272539, -75.5693935619959],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/medellincentral/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/c/IpucCentralMedellin/videos"
+  },
+  "moravia-medellin": {
+    "congregacion": "Moravia",
+    "coordenadas": [6.277900147143091, -75.5665372471813],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/p/Ipuc-Moravia-100067934511942/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "https://ipucmoravia.org/",
+    "youtube": "https://www.youtube.com/channel/UCocpmWhFrUDxaF6OLbWrepg"
+  },
+  "nueva-jerusalen-la-torre-bello": {
+    "congregacion": "Nueva Jerusalen La Torre",
+    "coordenadas": [6.319437493769869, -75.5842703943047],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucjerusalenlatorre.bello/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": ""
+  },
+  "palermo-medellin": {
+    "congregacion": "Palermo",
+    "coordenadas": [6.284178242007601, -75.56449212071401],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUCPalermoMedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "paris-bello": {
+    "congregacion": "Paris",
+    "coordenadas": [6.314006783443201, -75.58254858174148],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuc.paris/",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": ""
+  },
+  "picacho-medellin": {
+    "congregacion": "Picacho",
+    "coordenadas": [6.30403285967246, -75.58268846444422],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/p/IPUC-El-Picacho-100077926050089/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UC63i9LcMUNkrFBlZNbiQ9rw?app=desktop"
+  },
+  "playa-rica-bello": {
+    "congregacion": "Playa Rica",
+    "coordenadas": [6.346578110468875, -75.56737100190034],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucplayaricabello",
+    "horarios": [],
+    "municipio": "Bello",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucplayaricabello3858"
+  },
+  "popular-1-medellin": {
+    "congregacion": "Popular 1",
+    "coordenadas": [6.297186090438826, -75.54759439735878],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/decomipucpopular1/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCx2SDSexFeqekVT2qme8FqA"
+  },
+  "popular-2-medellin": {
+    "congregacion": "Popular 2",
+    "coordenadas": [6.3035021439544066, -75.54860025990891],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/people/Iglesia-ipuc-popular-2/100069650859313/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "pueblo-viejo-la-estrella": {
+    "congregacion": "Pueblo Viejo",
+    "coordenadas": [6.1376704000838025, -75.6399303608075],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/PuebloViejoIPUC/",
+    "horarios": [],
+    "municipio": "La Estrella",
+    "pagina": "",
+    "youtube": ""
+  },
+  "sabaneta-central-sabaneta": {
+    "congregacion": "Sabaneta Central",
+    "coordenadas": [6.154573053041998, -75.61112902721766],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/ipucsabanetacentral/",
+    "horarios": [],
+    "municipio": "Sabaneta",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucsabanetacentral2457"
+  },
+  "san-antonio-de-prado-san-antonio-de-prado": {
+    "congregacion": "San Antonio de Prado",
+    "coordenadas": [6.177545760267358, -75.64443375155345],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/Ipuc-San-Antonio-de-Prado/100063639524201/",
+    "horarios": [],
+    "municipio": "San Antonio de Prado",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCdCHKgzhtDFDfVSFtpLxTEg"
+  },
+  "san-cristobal-san-cristobal": {
+    "congregacion": "San Cristobal",
+    "coordenadas": [6.279096480725489, -75.63930560239206],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/Ipuc-San-Crist%C3%B2bal-Medellin/100068891306589/",
+    "horarios": [],
+    "municipio": "San Cristobal",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/c/ipucsancristobalmedellin"
+  },
+  "san-fernando-itagui": {
+    "congregacion": "San Fernando",
+    "coordenadas": [6.1920486786210756, -75.58974550583117],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/IPUC-San-Fernando/100067970740340/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "",
+    "youtube": ""
+  },
+  "san-francisco-itagui": {
+    "congregacion": "San Francisco",
+    "coordenadas": [6.17297930351323, -75.63686010171578],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/DECOM.SF/",
+    "horarios": [],
+    "municipio": "Itagüí",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@decomipucsanfrancisco5447/"
+  },
+  "san-javier-medellin": {
+    "congregacion": "San Javier",
+    "coordenadas": [6.260200561813047, -75.61216247077498],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/IPUCSanJavierMedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCzfzFIYtIKGWTT-DkOAlI0Q"
+  },
+  "san-pablo-medellin": {
+    "congregacion": "San Pablo",
+    "coordenadas": [6.2866850160191055, -75.54471296033842],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUCSanPab/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipucsanpablomedellin7460/streams"
+  },
+  "santa-cecilia-medellin": {
+    "congregacion": "Santa Cecilia",
+    "coordenadas": [6.290612123875575, -75.54965921544222],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipucsantaceciliarisaralda//",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "http://ipucsantacecilia.blogspot.com/",
+    "youtube": "https://www.youtube.com/@IPUCSantaCecilia/videos"
+  },
+  "santa-rita-san-antonio-de-prado": {
+    "congregacion": "Santa Rita",
+    "coordenadas": [6.186726066202764, -75.64872027555568],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/people/ipuc-Santa-Rita-San-Antonio-de-Prado/100090839080447/",
+    "horarios": [],
+    "municipio": "San Antonio de Prado",
+    "pagina": "",
+    "youtube": ""
+  },
+  "santander-medellin": {
+    "congregacion": "Santander",
+    "coordenadas": [6.30675661515963, -75.57337361304728],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/groups/128154420574002/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@IPUCBarrioSantander"
+  },
+  "santo-domingo-medellin": {
+    "congregacion": "Santo Domingo",
+    "coordenadas": [6.293525641809038, -75.54294439321436],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/IPUCSantoDomingoSavioMedellin/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "segunda-de-sabaneta-sabaneta": {
+    "congregacion": "Segunda de Sabaneta",
+    "coordenadas": [6.147531723696652, -75.62078797949042],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/IPUC-Sabaneta-Segunda-100072274481368/",
+    "horarios": [],
+    "municipio": "Sabaneta",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/channel/UCpftSh7mfkdjzVf2MBmjLjA"
+  },
+  "tejelo-medellin": {
+    "congregacion": "Tejelo",
+    "coordenadas": [6.305764703746076, -75.56890828608556],
+    "distrito": 22,
+    "facebook": "https://www.facebook.com/ipuctejelo/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipuctejelo9981/videos"
+  },
+  "tercera-de-buenos-aires-medellin": {
+    "congregacion": "Tercera de Buenos Aires",
+    "coordenadas": [6.240156501517126, -75.5557736759069],
+    "distrito": 9,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  },
+  "toscana-medellin": {
+    "congregacion": "Toscana",
+    "coordenadas": [6.304124556200784, -75.55897453510205],
+    "distrito": 22,
+    "facebook": "",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": "https://www.youtube.com/@ipuctoscanamedellin2434/streams"
+  },
+  "villatina-medellin": {
+    "congregacion": "Villatina",
+    "coordenadas": [6.236430837191583, -75.53881193346737],
+    "distrito": 9,
+    "facebook": "https://www.facebook.com/p/IPUC-Villatina-100068475678649/",
+    "horarios": [],
+    "municipio": "Medellín",
+    "pagina": "",
+    "youtube": ""
+  }
+}

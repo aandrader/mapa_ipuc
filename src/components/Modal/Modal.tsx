@@ -7,7 +7,7 @@ import { defaultSchedule } from "@/data/defaultSchedule";
 import { ClientButtons } from "./ClientButtons";
 
 export const Modal = ({ templeData }: { templeData: templeDataType }) => {
-  const schedule = templeData.horarios.length === 0 ? defaultSchedule : templeData.horarios;
+  const schedule = templeData.horarios ?? defaultSchedule;
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
       {templeData.facebook && (
@@ -29,7 +29,7 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
   );
   const schedules = (
     <div className="flex justify-center items-start flex-col">
-      {schedule.map((service) => (
+      {schedule.map((service: any) => (
         <li className="font-medium " key={service.dia}>
           <b>{service.dia}</b>: {service.hora}
         </li>

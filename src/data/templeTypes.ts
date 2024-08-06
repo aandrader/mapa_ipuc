@@ -1,7 +1,6 @@
 import { LatLngTuple } from "leaflet";
-import templeData from "./congregaciones.json";
 
-export type templeIdType = keyof typeof templeData;
+export type templeIdType = any;
 
 export interface templeDataType {
   congregacion: string;
@@ -11,5 +10,5 @@ export interface templeDataType {
   facebook: string;
   youtube: string;
   pagina: string;
-  horarios: never[];
+  horarios?: any;
 }

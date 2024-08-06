@@ -20,3 +20,9 @@ export const filterTemples = (array: [string, templeDataType][], search: string)
     return templeName === "" ? templeName : templeName.includes(search) || templeRegion.includes(search);
   });
 };
+
+export const formatTempleUrl = (temple: string, town: string) => {
+  const newTemple = removeAccents(temple.toLowerCase().trim().replace(/\s+/g, "-"));
+  const newTown = removeAccents(town.toLowerCase().trim().replace(/\s+/g, "-"));
+  return newTemple + "-" + newTown;
+};
