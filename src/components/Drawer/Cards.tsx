@@ -1,12 +1,11 @@
 import { useMap } from "@/context/MapContext";
-import { templeDataType } from "@/data/templeTypes";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { InfoAlert } from "./InfoAlert";
 import Link from "next/link";
 
 interface CardsProps {
-  filteredTemples: [string, templeDataType][] | undefined;
+  filteredTemples: any;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -16,8 +15,8 @@ export const Cards = ({ filteredTemples, setIsOpen }: CardsProps) => {
     <div className=" overflow-y-scroll h-[calc(100%-(43px+16px))] px-4 pt-4 mt-[1px] ">
       <InfoAlert />
       <div className="grid gap-2 auto-rows-min grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-4 ">
-        {filteredTemples?.map(([templeID, temple]) => (
-          <Link href={"/" + templeID} key={temple.congregacion + temple.municipio + temple.distrito}>
+        {filteredTemples?.map((temple: any) => (
+          <Link prefetch={false} href={"/" + temple.id} key={temple.id}>
             <Card
               onClick={() => {
                 // if (window.innerWidth <= 640)

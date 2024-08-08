@@ -1,12 +1,13 @@
 import { getTemples } from "@/utils/db";
-import { templeIdType } from "@/data/templeTypes";
 import { churchMarker, locationMarker } from "@/utils/markersRaw";
 import { Map } from "leaflet";
-import { templeDataType } from "../data/templeTypes";
+import { fetchTempleId } from "@/app/db/queries";
 
-const initialView = (templesData: any) => {
+const initialView = async () => {
   if (location.pathname !== "/") {
-    return [templesData[location.pathname.split("/").at(-1) as templeIdType].coordenadas, 16];
+    const templeId = location.pathname.split("/").at(-1) as any;
+    const { coordenadas } = (await fetchTempleId(templeId)) as any;
+    return [coordenadas, 16];
   }
   return new Promise<[number[], number]>((resolve) => {
     navigator.geolocation.getCurrentPosition(
@@ -21,7 +22,7 @@ const initialView = (templesData: any) => {
 
 export const initMap = async ({ L, router, setMap, setUserLocation }: any) => {
   const templesData = await getTemples();
-  const [initialCoords, initialZoom] = await initialView(templesData);
+  const [initialCoords, initialZoom] = await initialView();
 
   const mapDiv = document.getElementById("map");
   mapDiv?.classList.remove("skeleton");
@@ -35,10 +36,10 @@ export const initMap = async ({ L, router, setMap, setUserLocation }: any) => {
       '&copy; <&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   }).addTo(map);
 
-  for (const [templeID, templeData] of Object.entries(templesData) as any) {
+  for (const { id, ...templeData } of templesData as any) {
     const icon = L.divIcon({ html: churchMarker, className: "" });
     const marker = L.marker(templeData.coordenadas, { icon: icon }).on("click", () => {
-      router.push(`/${templeID}`);
+      router.push(`/${id}`);
       map.flyTo(templeData.coordenadas, 16, { duration: 1.5 });
     });
     marker.addTo(map);

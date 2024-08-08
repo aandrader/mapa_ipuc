@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
-import { fetchTemples } from "./db/db";
+import { fetchAllId } from "./db/queries";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const templesData = await fetchTemples();
-  return Object.keys(templesData).map((id) => ({ url: `https://mapaipuc.info/${id}` }));
+  const templesData = await fetchAllId();
+  return templesData.map(({ id }) => ({ url: `https://mapaipuc.info/${id}` }));
 }

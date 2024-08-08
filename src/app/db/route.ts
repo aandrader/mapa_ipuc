@@ -1,7 +1,7 @@
-import { fetchTemples } from "./db";
+import { pool } from "./db";
 
 export async function GET() {
-  const temples = await fetchTemples();
+  const res = await pool.query("SELECT id,congregacion,municipio,coordenadas from temples ");
   // writeFileSync("./output.json", JSON.stringify(temples));
-  return Response.json(temples);
+  return Response.json(res.rows);
 }

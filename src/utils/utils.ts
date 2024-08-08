@@ -8,15 +8,16 @@ export const removeAccents = (string: string) => {
     ó: "o",
     ú: "u",
     ü: "u",
+    ñ: "n",
   };
 
-  return string.replace(/[áéíóúü]/gi, (match) => tildes[match as keyof typeof tildes]);
+  return string.replace(/[áéíóúüñ]/gi, (match) => tildes[match as keyof typeof tildes]);
 };
 
-export const filterTemples = (array: [string, templeDataType][], search: string) => {
-  return array.filter(([_, item]) => {
-    const templeName = removeAccents(item.congregacion.toLowerCase());
-    const templeRegion = removeAccents(item.municipio.toLowerCase());
+export const filterTemples = (array: any, search: string) => {
+  return array.filter(({ congregacion, municipio }: any) => {
+    const templeName = removeAccents(congregacion.toLowerCase());
+    const templeRegion = removeAccents(municipio.toLowerCase());
     return templeName === "" ? templeName : templeName.includes(search) || templeRegion.includes(search);
   });
 };
