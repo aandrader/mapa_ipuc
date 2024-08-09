@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import { Dialog } from "@/components/Dialogs/Dialog";
+import { Dialog } from "./ui/Dialog";
 
 const googleFont = Poppins({ subsets: ["latin"], weight: ["400", "500"] });
 

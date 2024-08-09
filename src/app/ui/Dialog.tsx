@@ -3,7 +3,7 @@ import { useBackdrop } from "@/hooks/useBackdrop";
 import { subscribe, unsubscribe } from "@/utils/events";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CloseIcon, IconInstagram, IconLinkedin } from "../Icons";
+import { CloseIcon, IconInstagram, IconLinkedin } from "@/components/Icons";
 
 export const Dialog = () => {
   const [isOpen, setIsOpen] = useState(false);

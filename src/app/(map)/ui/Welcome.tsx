@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../Icons";
+import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../../../components/Icons";
 import { useBackdrop } from "@/hooks/useBackdrop";
 import { publish } from "@/utils/events";
 

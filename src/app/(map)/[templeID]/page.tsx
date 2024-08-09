@@ -1,8 +1,8 @@
-import { Modal } from "@/components/Modal/Modal";
+import { Modal } from "@/app/(map)/[templeID]/ui/Modal";
 import { type templeIdType } from "@/data/templeTypes";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { fetchTempleId } from "@/app/db/queries";
+import { fetchTempleId } from "@/actions/queries";
 
 export const dynamic = "force-static";
 interface TemplePageProps {

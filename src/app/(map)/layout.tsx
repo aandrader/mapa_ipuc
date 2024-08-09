@@ -1,14 +1,16 @@
-import { Drawer } from "@/components/Drawer/Drawer";
-import MapProvider from "@/context/MapContext";
-import UserLocationProvider from "@/context/UserLocationContext";
+import { Drawer } from "@/app/(map)/ui/Drawer";
+import { fetchTemples } from "../../actions/queries";
+import UserLocationProvider from "@/map/UserLocationProvider";
+import MapProvider from "@/map/MapProvider";
 
-export default function MapsLayout({ children }: { children: React.ReactNode }) {
+export default async function MapsLayout({ children }: { children: React.ReactNode }) {
+  const temples = await fetchTemples();
   return (
     <>
       {children} {/* Modal */}
       <UserLocationProvider>
-        <MapProvider>
-          <Drawer />
+        <MapProvider temples={temples}>
+          <Drawer temples={temples} />
         </MapProvider>
       </UserLocationProvider>
     </>

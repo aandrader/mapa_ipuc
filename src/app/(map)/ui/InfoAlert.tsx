@@ -1,5 +1,5 @@
 import { useUserLocation } from "@/context/UserLocationContext";
-import { InfoIcon, LocationIcon } from "../Icons";
+import { InfoIcon, LocationIcon } from "../../../components/Icons";
 import { useMap } from "@/context/MapContext";
 
 export const InfoAlert = () => {

@@ -3,20 +3,20 @@ import { ReactNode, createContext, useContext, useEffect, useState } from "react
 import "leaflet/dist/leaflet.css";
 import { useRouter } from "next/navigation";
 import { type Map } from "leaflet";
-import { useUserLocation } from "./UserLocationContext";
+import { useUserLocation } from "./UserLocationProvider";
 import { initMap } from "./initMap";
 
 const MapContext = createContext<any>({});
 
 export const useMap = () => useContext(MapContext);
 
-export default function MapProvider({ children }: { children: ReactNode }) {
+export default function MapProvider({ children, temples }: { children: ReactNode; temples: any }) {
   const [map, setMap] = useState<Map>();
   const router = useRouter();
   const { setUserLocation } = useUserLocation();
 
   useEffect(() => {
-    import("leaflet").then((L) => initMap({ L, setMap, setUserLocation, router }));
+    import("leaflet").then((L) => initMap({ L, setMap, setUserLocation, router, temples }));
     return () => {
       map?.remove();
     };

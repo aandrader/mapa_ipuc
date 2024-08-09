@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { fetchAllId } from "./db/queries";
+import { fetchAllId } from "../actions/queries";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const templesData = await fetchAllId();

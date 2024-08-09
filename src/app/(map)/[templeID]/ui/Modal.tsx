@@ -2,11 +2,11 @@ import { templeDataType } from "@/data/templeTypes";
 import Link from "next/link";
 import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
-import { IconButton } from "../IconButton";
+import { IconButton } from "../../../../components/IconButton";
 import { defaultSchedule } from "@/data/defaultSchedule";
 import { ClientButtons } from "./ClientButtons";
 
-export const Modal = ({ templeData }: { templeData: templeDataType }) => {
+export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios ?? defaultSchedule;
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
@@ -54,7 +54,7 @@ export const Modal = ({ templeData }: { templeData: templeDataType }) => {
           {schedules}
           {anchors}
         </div>
-        <ClientButtons />
+        <ClientButtons temple={templeData} />
         <div className="grid place-items-center p-3 border-t border-solid border-gray-300 sticky bottom-0 bg-white">
           <IconButton
             className="w-[100%] font-medium bg-gradient-to-r from-blue-ipuc-700 to-blue-500  "
