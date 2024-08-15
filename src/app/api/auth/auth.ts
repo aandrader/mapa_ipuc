@@ -26,7 +26,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (!templeUser) return null;
             if (credentials.password !== templeUser.password) return null;
 
-            return { id: templeUser.id, type: "temple" };
+            return { id: templeUser.id, type: "temple" } as any;
           }
         } catch {
           return null;

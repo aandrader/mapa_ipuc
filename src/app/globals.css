@@ -34,7 +34,7 @@
     @apply top-1/2 translate-y-[-50%] right-1/2 translate-x-[50%];
   }
   .above-map {
-    @apply z-[1000];
+    @apply z-[1001];
   }
 }
 

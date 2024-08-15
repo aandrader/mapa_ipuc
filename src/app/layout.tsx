@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Dialog } from "./ui/Dialog";
+import UserLocationProvider from "@/map/UserLocationProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const googleFont = Poppins({ subsets: ["latin"], weight: ["400", "500"] });
 
@@ -26,8 +28,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={googleFont.className + " relative"}>
-        {children}
+        <UserLocationProvider>{children}</UserLocationProvider>
         <Dialog />
+        <Toaster />
         <Analytics />
       </body>
     </html>

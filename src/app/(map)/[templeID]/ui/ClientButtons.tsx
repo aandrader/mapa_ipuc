@@ -1,7 +1,6 @@
 "use client";
 
 import { FeedbackIcon, ShareIcon } from "@/components/Icons";
-import { publish } from "@/utils/events";
 import Link from "next/link";
 
 export const ClientButtons = ({ temple }: any) => {
@@ -13,7 +12,7 @@ export const ClientButtons = ({ temple }: any) => {
         <ShareIcon />
         <span>Compartir congregación</span>
       </div>
-      <Link href={`/admin?temple=${temple.id}&d=${temple.distrito}`} className={divClass}>
+      <Link href={`/login?temple=${temple.id}&d=${temple.distrito}`} className={divClass}>
         <FeedbackIcon />
         <span>Actualizar información</span>
       </Link>

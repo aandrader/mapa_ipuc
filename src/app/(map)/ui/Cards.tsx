@@ -1,8 +1,8 @@
-import { useMap } from "@/context/MapContext";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { InfoAlert } from "./InfoAlert";
 import Link from "next/link";
+import { useMap } from "@/map/MapProvider";
 
 interface CardsProps {
   filteredTemples: any;

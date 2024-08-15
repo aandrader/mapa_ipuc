@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../../../components/Icons";
 import { useBackdrop } from "@/hooks/useBackdrop";
-import { publish } from "@/utils/events";
+import Link from "next/link";
 
 let firstEnter = true;
 
@@ -53,9 +53,11 @@ export const Welcome = () => {
           Su ubicación actual se marcará con un
           <IconUserLocation />
         </p>
-        <p className="underline text-blue-ipuc-200 cursor-pointer" onClick={() => publish("openDialog")}>
-          ¿Falta su congregación o desea modificarla? Contactarse.
-        </p>
+        <Link href={"/login"}>
+          <p className="underline text-blue-ipuc-200 cursor-pointer">
+            ¿Falta su congregación o desea modificarla? Contactarse.
+          </p>
+        </Link>
       </div>
     </>
   );

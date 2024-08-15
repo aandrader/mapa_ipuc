@@ -13,7 +13,6 @@ export const Drawer = ({ temples }: any) => {
   const drawerRef = useBackdrop(setIsOpen);
   const sortedTemples = useSortedTemples(temples);
   const [filteredTemples, setFilteredTemples] = useState(sortedTemples);
-
   const inputIcon = isOpen ? (
     <BackIcon
       className="absolute left-[calc((50px-32px)/2)] top-[calc((43px-32px)/2)] "

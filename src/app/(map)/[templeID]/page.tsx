@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { fetchTempleId } from "@/actions/queries";
 
-export const dynamic = "force-static";
 interface TemplePageProps {
   params: { templeID: templeIdType };
 }

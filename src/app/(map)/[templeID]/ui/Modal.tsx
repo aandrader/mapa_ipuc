@@ -3,11 +3,12 @@ import Link from "next/link";
 import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
-import { defaultSchedule } from "@/data/defaultSchedule";
 import { ClientButtons } from "./ClientButtons";
+import { format12Hour } from "../../../../utils/utils";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
-  const schedule = templeData.horarios ?? defaultSchedule;
+  const schedule = templeData.horarios;
+  console.log(schedule);
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
       {templeData.facebook && (
@@ -31,7 +32,7 @@ export const Modal = ({ templeData }: { templeData: any }) => {
     <div className="flex justify-center items-start flex-col">
       {schedule.map((service: any) => (
         <li className="font-medium " key={service.dia}>
-          <b>{service.dia}</b>: {service.hora}
+          <b>{service.dia}</b>: {format12Hour(service.hora)}
         </li>
       ))}
     </div>
