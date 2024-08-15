@@ -14,10 +14,6 @@ export const TempleTable = ({ temple }: any) => {
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
   const [services, setServices] = useState(temple.horarios);
 
-  const deleteService = (index: number) => {
-    setServices(services.toSpliced(index, 1));
-  };
-
   const addService = () => {
     setServices([...services, { dia: "", hora: "" }]);
   };
@@ -42,7 +38,8 @@ export const TempleTable = ({ temple }: any) => {
         <ScheduleRow
           horario={horario}
           key={horario.dia + horario.hora}
-          deleteService={() => deleteService(index)}
+          index={index}
+          setServices={setServices}
           readOnly={readOnly}
         />
       ))}
@@ -66,8 +63,6 @@ export const TempleTable = ({ temple }: any) => {
       coordenadas: templeLocation,
       horarios: services,
     };
-
-    console.log({ newData, temple });
 
     await updateTemple(newData, temple);
     setReadOnly(true);
@@ -114,22 +109,35 @@ export const TempleTable = ({ temple }: any) => {
 
 const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
-const ScheduleRow = ({ horario, deleteService, readOnly }: any) => {
+const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
+  const deleteService = (index: number) => {
+    setServices((services: any) => services.toSpliced(index, 1));
+  };
+
+  const onChange = (e: any) => {
+    e.preventDefault();
+    setServices((services: any) => {
+      const copy = [...services];
+      const { name, value } = e.target;
+      copy[index][name] = value;
+      return copy;
+    });
+  };
   return (
     <div className="flex gap-3">
       <select
         className="rounded-lg px-2"
-        //   onChange={onChange}
-        defaultValue={horario.dia}
+        onChange={onChange}
+        value={horario.dia}
         disabled={readOnly}
-        name="day"
+        name="dia"
       >
         {days.map((day) => (
           <option key={day}>{day}</option>
         ))}
       </select>
-      <input type="time" readOnly={readOnly} name="time" defaultValue={horario.hora} />
-      <Button className={`${readOnly && "hidden"}`} type="button" onClick={deleteService}>
+      <input type="time" readOnly={readOnly} name="hora" value={horario.hora} onChange={onChange} />
+      <Button className={`${readOnly && "hidden"}`} type="button" onClick={() => deleteService}>
         Eliminar día
       </Button>
     </div>

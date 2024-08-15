@@ -56,10 +56,8 @@ export function getUpdateDataDefer(newData: any, originalData: any) {
 
   // Compare originalData with existingRecord to determine changes
   for (let key in newData) {
-    console.log(key);
     if (["coordenadas", "horarios"].includes(key)) {
       if (JSON.stringify(originalData[key]) !== JSON.stringify(newData[key])) {
-        console.log("paso");
         updates[key] = newData[key];
       }
     } else if (originalData[key] !== newData[key]) {

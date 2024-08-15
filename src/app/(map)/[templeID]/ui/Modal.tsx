@@ -8,7 +8,6 @@ import { format12Hour } from "../../../../utils/utils";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios;
-  console.log(schedule);
   const anchors = (
     <div className="flex flex-col gap-1 items-center justify-center">
       {templeData.facebook && (

@@ -10,7 +10,6 @@ import { getUpdateDataDefer } from "@/utils/utils";
 const { password, ...columns } = getTableColumns(temples);
 
 export const fetchTemples = cache(async () => {
-  console.log("DB");
   const res = await pool.query(
     "SELECT id,congregacion,municipio,coordenadas from temples where coordenadas is not null "
   );

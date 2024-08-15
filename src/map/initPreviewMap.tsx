@@ -28,7 +28,6 @@ export const initPreviewMap = async ({ L, setMap, setTempleLocation, coordinates
   }
 
   map.on("locationfound", (e) => {
-    console.log("location");
     markerGroup.clearLayers();
     const userLocation = [e.latlng.lat, e.latlng.lng] as LatLngTuple;
     setTempleLocation(userLocation);

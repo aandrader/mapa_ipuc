@@ -22,7 +22,6 @@ export default async function AdminPage() {
     );
   } else {
     const temple = await fetchTempleId(id);
-    console.log(temple);
     return (
       <>
         <Header title={"Panel administrativo Mapa Ipuc"} />
