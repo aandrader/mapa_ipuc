@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useBackdrop } from "@/hooks/useBackdrop";
 import { Cards } from "./Cards";
-
 import { useSortedTemples } from "@/hooks/useSortedTemples";
 import { BackIcon } from "@/components/Icons";
 import { Welcome } from "@/app/(map)/ui/Welcome";

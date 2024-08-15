@@ -1,4 +1,3 @@
-import { templeDataType } from "@/data/templeTypes";
 import Link from "next/link";
 import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
