@@ -74,7 +74,7 @@ export const getAuthAdmin = async (distrito: string) => {
 };
 
 export const addNewTemple = async (temple: any) => {
-  await db.insert(temple).values({
+  await db.insert(temples).values({
     id: temple.id,
     congregacion: temple.congregacion,
     distrito: temple.distrito,

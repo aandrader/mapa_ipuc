@@ -1,8 +1,8 @@
 "use client";
 
+import { signOut } from "@/app/api/auth/auth";
 import { Button } from "@/components/ui/button";
 import { publish } from "@/utils/events";
-import { signOut } from "next-auth/react";
 
 export const Header = ({ title }: { title: string }) => {
   return (

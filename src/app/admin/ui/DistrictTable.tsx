@@ -4,11 +4,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { formatTempleId, generateRandomPassword } from "@/utils/utils";
 import { useState } from "react";
 import { TableSearchInput } from "./TableSearchInput";
+import { useRouter } from "next/navigation";
 
 export const DistrictTable = ({ temples, userId }: any) => {
   const [filteredTemples, setFilteredTemples] = useState(temples);
   const [newTemple, setNewTemple] = useState({ congregacion: "", municipio: "" });
   const [showTemple, setShowTemple] = useState(false);
+  const router = useRouter();
 
   const onChange = (e: any) => {
     const { name, value } = e.target;
@@ -20,6 +22,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
 
   const onClick = async () => {
     const { congregacion, municipio } = newTemple;
+    console.log(newTemple);
     await addNewTemple({
       id: formatTempleId(congregacion, municipio),
       distrito: userId,
@@ -27,7 +30,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
       congregacion,
       municipio,
     });
-
+    router.refresh();
     setShowTemple(false);
     setNewTemple({ congregacion: "", municipio: "" });
   };

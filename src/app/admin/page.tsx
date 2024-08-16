@@ -6,6 +6,8 @@ import { DistrictTable } from "./ui/DistrictTable";
 import { TempleTable } from "./ui/TempleTable";
 import { PasswordDialog } from "./ui/PasswordDialog";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminPage() {
   const session = (await auth()) as any;
   if (!session) redirect("/login");

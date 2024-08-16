@@ -18,7 +18,7 @@ function getCurrentPosition() {
   });
 }
 
-const initialView = async (map: Map) => {
+const initialView = async () => {
   if (location.pathname !== "/") {
     const templeId = location.pathname.split("/").at(-1) as any;
     const { coordenadas } = (await fetchTempleId(templeId)) as any;
@@ -43,7 +43,7 @@ export const initMap = async ({ L, router, setMap, setUserLocation, temples }: a
     if (location.pathname === "/") map.flyTo(e.latlng, 13);
   });
 
-  const view = await initialView(map);
+  const view = await initialView();
   if (view) {
     map.setView(view.coordenadas, view.coordenadas) as Map;
     map.fire("locationfound", { latlng: { lat: view.coordenadas[0], lng: view.coordenadas[1] } });
