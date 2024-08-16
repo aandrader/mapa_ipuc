@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "@/app/api/auth/auth";
+import { logout } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { publish } from "@/utils/events";
 
@@ -17,7 +17,7 @@ export const Header = ({ title }: { title: string }) => {
           Cambiar contraseña
         </Button>
 
-        <Button className=" bg-blue-ipuc-600 hover:bg-blue-ipuc-600/50" onClick={() => signOut()}>
+        <Button className=" bg-blue-ipuc-600 hover:bg-blue-ipuc-600/50" onClick={() => logout()}>
           Cerrar sesión
         </Button>
       </div>
