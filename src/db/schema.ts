@@ -8,6 +8,7 @@ export const temples = pgTable("temples", {
   coordenadas: numeric("coordenadas").array(),
   facebook: varchar("facebook", { length: 255 }),
   youtube: varchar("youtube", { length: 255 }),
+  instagram: varchar("instagram", { length: 255 }),
   pagina: varchar("pagina", { length: 255 }),
   horarios: jsonb("horarios").$type<{ dia: string; hora: string }[]>(),
   password: varchar("password", { length: 255 }).notNull(),

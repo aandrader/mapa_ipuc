@@ -172,7 +172,7 @@ export const IconInstagram = ({ className, ...props }: SVGProps<SVGSVGElement>) 
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
-      className={twMerge("size-7 shrink-0", className)}
+      className={twMerge("size-5 shrink-0", className)}
       {...props}
     >
       <radialGradient

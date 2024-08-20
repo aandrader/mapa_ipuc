@@ -85,6 +85,7 @@ export const addNewTemple = async (temple: any) => {
 
 export const updateTemple = async (newData: any, originalData: any) => {
   const updates = getUpdateDataDefer(newData, originalData);
+  console.log({ newData, originalData, updates });
   if (Object.keys(updates).length === 0) return;
 
   await db.update(temples).set(updates).where(eq(temples.id, originalData.id));

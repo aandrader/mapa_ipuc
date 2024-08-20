@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { CloseIcon, FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
+import { CloseIcon, FacebookIcon, IconInstagram, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";
 import { format12Hour } from "../../../../utils/utils";
+import { Instagram } from "lucide-react";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios;
   const anchors = (
-    <div className="flex flex-col gap-1 items-center justify-center">
+    <div className="grid grid-cols-1 gap-1 place-items-center">
       {templeData.facebook && (
         <IconButton className="bg-blue-600 hover:bg-blue-700" href={templeData.facebook}>
           <FacebookIcon />
@@ -17,6 +18,14 @@ export const Modal = ({ templeData }: { templeData: any }) => {
       {templeData.youtube && (
         <IconButton className="bg-red-600 hover:bg-red-700" href={templeData.youtube}>
           <YoutubeIcon />
+        </IconButton>
+      )}
+      {templeData.instagram && (
+        <IconButton
+          className="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
+          href={templeData.instagram}
+        >
+          <Instagram className="size-5" />
         </IconButton>
       )}
       {templeData.pagina && (

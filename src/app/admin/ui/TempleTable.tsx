@@ -8,11 +8,15 @@ import { useEffect, useState } from "react";
 import { InputLabel } from "./InputLabel";
 import { toast } from "@/components/ui/use-toast";
 import { updateTemple } from "@/actions/queries";
+import { useRouter } from "next/navigation";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Info } from "lucide-react";
 
 export const TempleTable = ({ temple }: any) => {
   const [readOnly, setReadOnly] = useState(true);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
   const [services, setServices] = useState(temple.horarios);
+  const router = useRouter();
 
   const addService = () => {
     setServices([...services, { dia: "", hora: "" }]);
@@ -24,7 +28,13 @@ export const TempleTable = ({ temple }: any) => {
     </Button>
   ) : (
     <>
-      <Button type="button" onClick={() => setReadOnly(true)}>
+      <Button
+        type="button"
+        onClick={() => {
+          setReadOnly(true);
+          router.refresh();
+        }}
+      >
         Cancelar
       </Button>
       <Button>Guardar información</Button>
@@ -59,17 +69,32 @@ export const TempleTable = ({ temple }: any) => {
     const newData = {
       facebook: data.facebook,
       youtube: data.youtube,
+      instagram: data.instagram,
       pagina: data.pagina,
       coordenadas: templeLocation,
       horarios: services,
     };
 
-    await updateTemple(newData, temple);
+    try {
+      await updateTemple(newData, temple);
+      toast({
+        title: "Informacion actualizada correctamente",
+        variant: "success",
+        // description: "Hubo un error actualizando la información.",
+      });
+    } catch {
+      toast({
+        title: "Error",
+        variant: "error",
+        description: "Hubo un error actualizando la información.",
+      });
+    }
     setReadOnly(true);
+    router.refresh();
   };
 
   return (
-    <form className="grid grid-cols-2 gap-10 p-4" onSubmit={onSubmit}>
+    <form className="grid grid-cols-2 gap-10 p-4 h-[calc(100vh-68px)]" onSubmit={onSubmit}>
       <div className="flex flex-col gap-2">
         <div className="flex justify-between">
           <div>
@@ -94,11 +119,18 @@ export const TempleTable = ({ temple }: any) => {
           readOnly={readOnly}
         />
         <InputLabel
+          label="Link de Instagram"
+          name="instagram"
+          defaultValue={temple.instagram}
+          readOnly={readOnly}
+        />
+        <InputLabel
           label="Link de página general"
           name="pagina"
           defaultValue={temple.pagina}
           readOnly={readOnly}
         />
+
         {schedule}
       </div>
 
@@ -110,7 +142,7 @@ export const TempleTable = ({ temple }: any) => {
 const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
 const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
-  const deleteService = (index: number) => {
+  const deleteService = () => {
     setServices((services: any) => services.toSpliced(index, 1));
   };
 
@@ -137,7 +169,7 @@ const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
         ))}
       </select>
       <input type="time" readOnly={readOnly} name="hora" value={horario.hora} onChange={onChange} />
-      <Button className={`${readOnly && "hidden"}`} type="button" onClick={() => deleteService}>
+      <Button className={`${readOnly && "hidden"}`} type="button" onClick={() => deleteService()}>
         Eliminar día
       </Button>
     </div>
@@ -168,7 +200,16 @@ const FormMap = ({ setTempleLocation, coordinates, readOnly }: any) => {
   return (
     <div className="flex flex-col gap-2">
       <div id="map" className="w-full h-[50%] skeleton"></div>
-      <Button className={`${readOnly && "hidden"}`} type="button" onClick={() => getLocation()}>
+      <Alert variant="destructive" className={`${readOnly && "hidden"}`}>
+        <Info className="h-4 w-4" />
+        <AlertTitle>Advertencia</AlertTitle>
+        <AlertDescription>
+          Para obtener la ubicación del templo, es necesario pararse en la entrada del mismo e ingresar la
+          ubicación actual desde un celular o una tablet, ya que estos cuentan con una geolocalización más
+          precisa.
+        </AlertDescription>
+      </Alert>
+      <Button type="button" onClick={() => getLocation()} className={`${readOnly && "hidden"}`}>
         Ingresar ubicacion actual
       </Button>
     </div>

@@ -26,7 +26,7 @@ export default async function AdminPage() {
     const temple = await fetchTempleId(id);
     return (
       <>
-        <Header title={"Panel administrativo Mapa Ipuc"} />
+        <Header title={"Panel administrativo"} />
         <TempleTable temple={temple} />
         <PasswordDialog session={session} />
       </>
