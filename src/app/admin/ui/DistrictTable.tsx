@@ -5,6 +5,7 @@ import { formatTempleId, generateRandomPassword } from "@/utils/utils";
 import { useState } from "react";
 import { TableSearchInput } from "./TableSearchInput";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export const DistrictTable = ({ temples, userId }: any) => {
   const [filteredTemples, setFilteredTemples] = useState(temples);
@@ -70,14 +71,12 @@ export const DistrictTable = ({ temples, userId }: any) => {
       </button>
     </>
   ) : (
-    <button className="text-white bg-blue-ipuc-800 p-2 rounded-md" onClick={() => setShowTemple(true)}>
-      Crear nuevo templo
-    </button>
+    <Button onClick={() => setShowTemple(true)}>Crear nuevo templo</Button>
   );
 
   return (
     <div className="p-3">
-      <div className="flex justify-between ">
+      <div className="grid grid-rows-2 md:flex md:justify-between gap-2">
         <TableSearchInput setFilteredTemples={setFilteredTemples} templesArray={temples} />
         <div className="flex gap-2">{buttons}</div>
       </div>

@@ -9,7 +9,7 @@ export const TableSearchInput = ({ templesArray, setFilteredTemples }: any) => {
   };
   return (
     <input
-      className={`size-[30%] px-3 py-2 rounded-md border border-solid border-gray-300 outline-none focus:border-blue-ipuc-700  `}
+      className={`w-full px-3 py-2 rounded-md border border-solid border-gray-300 outline-none focus:border-blue-ipuc-700  `}
       onChange={(e) => {
         filterTempleArray(e.target.value);
       }}

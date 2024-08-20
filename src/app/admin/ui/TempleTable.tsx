@@ -1,64 +1,21 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { initPreviewMap } from "@/map/initPreviewMap";
-import { type Map } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { InputLabel } from "./InputLabel";
 import { toast } from "@/components/ui/use-toast";
 import { updateTemple } from "@/actions/queries";
 import { useRouter } from "next/navigation";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Info } from "lucide-react";
+import { FormMap } from "./FormMap";
+import { useState } from "react";
+import { X } from "lucide-react";
 
 export const TempleTable = ({ temple }: any) => {
   const [readOnly, setReadOnly] = useState(true);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
   const [services, setServices] = useState(temple.horarios);
+  const [map, setMap] = useState<any>();
   const router = useRouter();
-
-  const addService = () => {
-    setServices([...services, { dia: "", hora: "" }]);
-  };
-
-  const buttons = readOnly ? (
-    <Button type="button" onClick={() => setReadOnly(false)}>
-      Actualizar información
-    </Button>
-  ) : (
-    <>
-      <Button
-        type="button"
-        onClick={() => {
-          setReadOnly(true);
-          router.refresh();
-        }}
-      >
-        Cancelar
-      </Button>
-      <Button>Guardar información</Button>
-    </>
-  );
-
-  const schedule = (
-    <div className="flex gap-1 flex-col">
-      <p>Horarios de culto</p>
-      {services.map((horario: any, index: any) => (
-        <ScheduleRow
-          horario={horario}
-          key={horario.dia + horario.hora}
-          index={index}
-          setServices={setServices}
-          readOnly={readOnly}
-        />
-      ))}
-
-      <Button type="button" className={`${readOnly && "hidden"} w-min`} onClick={addService}>
-        Agregar dia
-      </Button>
-    </div>
-  );
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -93,10 +50,58 @@ export const TempleTable = ({ temple }: any) => {
     router.refresh();
   };
 
+  const addService = () => {
+    setServices([...services, { dia: "", hora: "" }]);
+  };
+
+  const buttons = readOnly ? (
+    <Button type="button" onClick={() => setReadOnly(false)}>
+      Actualizar información
+    </Button>
+  ) : (
+    <>
+      <Button
+        type="button"
+        onClick={() => {
+          setReadOnly(true);
+          map.fire("refresh", { templeLocation: temple.coordenadas });
+          router.refresh();
+        }}
+      >
+        Cancelar
+      </Button>
+      <Button>Guardar información</Button>
+    </>
+  );
+
+  const schedule = (
+    <div className="flex gap-1 flex-col">
+      <p>Horarios de culto</p>
+      {services.map((horario: any, index: any) => (
+        <ScheduleRow
+          horario={horario}
+          key={horario.dia + horario.hora}
+          index={index}
+          setServices={setServices}
+          readOnly={readOnly}
+        />
+      ))}
+
+      <Button
+        type="button"
+        variant="outline"
+        className={`${readOnly && "hidden"} w-min`}
+        onClick={addService}
+      >
+        Agregar dia
+      </Button>
+    </div>
+  );
+
   return (
-    <form className="grid grid-cols-2 gap-10 p-4 h-[calc(100vh-68px)]" onSubmit={onSubmit}>
+    <form className="grid grid-cols-1 md:grid-cols-2 gap-10 p-4 md:h-[calc(100vh-68px)]" onSubmit={onSubmit}>
       <div className="flex flex-col gap-2">
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 gap-2">
           <div>
             <h2 className="text-xl text-blue-ipuc-800 font-medium">{temple.congregacion}</h2>
             <span className="font-medium text-blue-ipuc-600">
@@ -134,7 +139,16 @@ export const TempleTable = ({ temple }: any) => {
         {schedule}
       </div>
 
-      <FormMap setTempleLocation={setTempleLocation} coordinates={temple.coordenadas} readOnly={readOnly} />
+      <div className="">
+        <FormMap
+          map={map}
+          setMap={setMap}
+          templeLocation={templeLocation}
+          setTempleLocation={setTempleLocation}
+          coordinates={temple.coordenadas}
+          readOnly={readOnly}
+        />
+      </div>
     </form>
   );
 };
@@ -169,48 +183,13 @@ const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
         ))}
       </select>
       <input type="time" readOnly={readOnly} name="hora" value={horario.hora} onChange={onChange} />
-      <Button className={`${readOnly && "hidden"}`} type="button" onClick={() => deleteService()}>
-        Eliminar día
-      </Button>
-    </div>
-  );
-};
-
-const FormMap = ({ setTempleLocation, coordinates, readOnly }: any) => {
-  const [map, setMap] = useState<Map>();
-  useEffect(() => {
-    import("leaflet").then((L) => initPreviewMap({ L, setMap, setTempleLocation, coordinates }));
-    return () => {
-      map?.remove();
-    };
-    // eslint-disable-next-line
-  }, []);
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      map!.locate({ enableHighAccuracy: true });
-    } else {
-      toast({
-        title: "Error",
-        variant: "error",
-        description: "El navegador que estas usando no admite obtener tu ubicacion actual.",
-      });
-    }
-  };
-  return (
-    <div className="flex flex-col gap-2">
-      <div id="map" className="w-full h-[50%] skeleton"></div>
-      <Alert variant="destructive" className={`${readOnly && "hidden"}`}>
-        <Info className="h-4 w-4" />
-        <AlertTitle>Advertencia</AlertTitle>
-        <AlertDescription>
-          Para obtener la ubicación del templo, es necesario pararse en la entrada del mismo e ingresar la
-          ubicación actual desde un celular o una tablet, ya que estos cuentan con una geolocalización más
-          precisa.
-        </AlertDescription>
-      </Alert>
-      <Button type="button" onClick={() => getLocation()} className={`${readOnly && "hidden"}`}>
-        Ingresar ubicacion actual
+      <Button
+        className={`${readOnly && "hidden"} p-1`}
+        type="button"
+        variant="outline"
+        onClick={() => deleteService()}
+      >
+        <X />
       </Button>
     </div>
   );
