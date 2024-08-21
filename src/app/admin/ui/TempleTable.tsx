@@ -50,6 +50,14 @@ export const TempleTable = ({ temple }: any) => {
     router.refresh();
   };
 
+  const onReset = (e: any) => {
+    e.preventDefault();
+    e.target.closest("form").reset();
+    setServices(temple.horarios);
+    map.fire("refresh", { templeLocation: temple.coordenadas });
+    setReadOnly(true);
+  };
+
   const addService = () => {
     setServices([...services, { dia: "", hora: "" }]);
   };
@@ -60,14 +68,7 @@ export const TempleTable = ({ temple }: any) => {
     </Button>
   ) : (
     <>
-      <Button
-        type="button"
-        onClick={() => {
-          setReadOnly(true);
-          map.fire("refresh", { templeLocation: temple.coordenadas });
-          router.refresh();
-        }}
-      >
+      <Button type="button" onClick={onReset}>
         Cancelar
       </Button>
       <Button>Guardar información</Button>
@@ -163,7 +164,7 @@ const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
   const onChange = (e: any) => {
     e.preventDefault();
     setServices((services: any) => {
-      const copy = [...services];
+      const copy = JSON.parse(JSON.stringify(services));
       const { name, value } = e.target;
       copy[index][name] = value;
       return copy;
