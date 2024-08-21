@@ -74,13 +74,24 @@ export const getAuthAdmin = async (distrito: string) => {
 };
 
 export const addNewTemple = async (temple: any) => {
-  await db.insert(temples).values({
-    id: temple.id,
-    congregacion: temple.congregacion,
-    distrito: temple.distrito,
-    municipio: temple.municipio,
-    password: temple.password,
-  });
+  return (
+    await db
+      .insert(temples)
+      .values({
+        id: temple.id,
+        congregacion: temple.congregacion,
+        distrito: temple.distrito,
+        municipio: temple.municipio,
+        password: temple.password,
+      })
+      .returning({
+        id: temples.id,
+        congregacion: temples.congregacion,
+        distrito: temples.distrito,
+        municipio: temples.municipio,
+        password: temples.password,
+      })
+  )[0];
 };
 
 export const updateTemple = async (newData: any, originalData: any) => {

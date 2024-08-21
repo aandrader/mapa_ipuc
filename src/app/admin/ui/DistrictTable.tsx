@@ -23,15 +23,17 @@ export const DistrictTable = ({ temples, userId }: any) => {
 
   const onClick = async () => {
     const { congregacion, municipio } = newTemple;
-    console.log(newTemple);
-    await addNewTemple({
-      id: formatTempleId(congregacion, municipio),
-      distrito: userId,
-      password: generateRandomPassword(),
-      congregacion,
-      municipio,
-    });
-    router.refresh();
+    if (congregacion && municipio) {
+      const addedTemple = await addNewTemple({
+        id: formatTempleId(congregacion, municipio),
+        distrito: userId,
+        password: generateRandomPassword(),
+        congregacion,
+        municipio,
+      });
+      setFilteredTemples([addedTemple, ...filteredTemples]);
+      router.refresh();
+    }
     setShowTemple(false);
     setNewTemple({ congregacion: "", municipio: "" });
   };
@@ -63,12 +65,8 @@ export const DistrictTable = ({ temples, userId }: any) => {
 
   const buttons = showTemple ? (
     <>
-      <button className="text-white bg-blue-ipuc-800 p-2 rounded-md" onClick={onClick}>
-        Guardar nuevo templo
-      </button>
-      <button className="text-white bg-blue-ipuc-800 p-2 rounded-md" onClick={() => setShowTemple(false)}>
-        Cancelar
-      </button>
+      <Button onClick={onClick}>Guardar nuevo templo</Button>
+      <Button onClick={() => setShowTemple(false)}>Cancelar</Button>
     </>
   ) : (
     <Button onClick={() => setShowTemple(true)}>Crear nuevo templo</Button>
