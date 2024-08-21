@@ -1,6 +1,5 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { InputLabel } from "./InputLabel";
 import { toast } from "@/components/ui/use-toast";
@@ -9,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { FormMap } from "./FormMap";
 import { useState } from "react";
 import { X } from "lucide-react";
+import Image from "next/image";
 
 export const TempleTable = ({ temple }: any) => {
   const [readOnly, setReadOnly] = useState(true);
@@ -140,7 +140,7 @@ export const TempleTable = ({ temple }: any) => {
         {schedule}
       </div>
 
-      <div className="">
+      <div className="flex flex-col gap-4">
         <FormMap
           map={map}
           setMap={setMap}
@@ -149,6 +149,29 @@ export const TempleTable = ({ temple }: any) => {
           coordinates={temple.coordenadas}
           readOnly={readOnly}
         />
+        <div className="flex flex-col gap-2">
+          <p>Foto</p>
+          <div className="flex gap-2">
+            <div className="relative w-[230px] h-[230px] grid place-items-center rounded-lg bg-slate-200">
+              {temple.img ? (
+                <Image
+                  src={temple.img}
+                  className="rounded-lg object-cover"
+                  fill
+                  sizes="300px"
+                  alt="Foto iglesia"
+                  priority={true}
+                />
+              ) : (
+                <span className="font-medium text-slate-500">Sin imagen</span>
+              )}
+            </div>
+
+            <Button className="w-min" type="button">
+              Actualizar foto
+            </Button>
+          </div>
+        </div>
       </div>
     </form>
   );

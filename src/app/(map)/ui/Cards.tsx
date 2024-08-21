@@ -23,6 +23,7 @@ export const Cards = ({ filteredTemples, setIsOpen }: CardsProps) => {
                 setIsOpen((isOpen: boolean) => !isOpen);
                 map.flyTo(temple.coordenadas, 16, { duration: 1.5 });
               }}
+              img={temple.img}
               congregacion={temple.congregacion}
               municipio={temple.municipio}
             />
@@ -37,21 +38,19 @@ interface CardProps {
   onClick: () => void;
   congregacion: string;
   municipio: string;
+  img: string;
 }
 
-const Card = ({ congregacion, municipio, onClick }: CardProps) => {
+const Card = ({ congregacion, municipio, img, onClick }: CardProps) => {
+  const imgUrl = img ?? "/logo_ipuc.webp";
   return (
     <div
-      className="  border border-solid break-words rounded-2xl border-gray-300 cursor-pointer"
+      className="  border border-solid break-words rounded-2xl border-gray-300 cursor-pointer overflow-hidden "
       onClick={onClick}
     >
-      <Image
-        src={"/logo_ipuc.webp"}
-        width={150}
-        height={105.5}
-        style={{ width: "100%", height: "auto" }}
-        alt="Foto iglesia"
-      />
+      <div className="relative w-full h-[105.5px] ">
+        <Image src={imgUrl} fill className="object-cover" alt="Foto iglesia" />
+      </div>
       <div className="px-1 py-3">
         <h2 className="text-center font-medium">{congregacion}</h2>
         <h3 className="text-center text-sm  text-gray-500">{municipio}</h3>

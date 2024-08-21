@@ -11,7 +11,7 @@ const { password, ...columns } = getTableColumns(temples);
 
 export const fetchTemples = cache(async () => {
   const res = await pool.query(
-    "SELECT id,congregacion,municipio,coordenadas from temples where coordenadas is not null "
+    "SELECT id,congregacion,municipio,coordenadas,img from temples where coordenadas is not null "
   );
   return res.rows;
 });

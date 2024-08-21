@@ -3,6 +3,7 @@ import { integer, jsonb, numeric, pgTable, varchar } from "drizzle-orm/pg-core";
 export const temples = pgTable("temples", {
   id: varchar("id", { length: 255 }).notNull(),
   congregacion: varchar("congregacion", { length: 255 }),
+  img: varchar("img", { length: 255 }),
   distrito: integer("distrito"),
   municipio: varchar("municipio", { length: 255 }),
   coordenadas: numeric("coordenadas").array(),

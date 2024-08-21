@@ -4,10 +4,11 @@ import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";
 import { format12Hour } from "../../../../utils/utils";
-import { Instagram } from "lucide-react";
+import { Instagram, X } from "lucide-react";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios;
+  const imgUrl = templeData.img ?? "/logo_ipuc.webp";
   const anchors = (
     <div className="grid grid-cols-1 gap-1 place-items-center">
       {templeData.facebook && (
@@ -46,17 +47,21 @@ export const Modal = ({ templeData }: { templeData: any }) => {
   );
   return (
     <div className="absolute card absolute-center-y left-5 w-[300px] z-[1000] overflow-hidden">
-      <div className="overflow-auto  lg:w-fit h-fit box-content max-h-[95vh] ">
-        <Link className="absolute right-0 translate-y-[25%] translate-x-[-25%]" href={"/"}>
-          <CloseIcon />
+      <div className="overflow-auto lg:w-fit h-fit box-content max-h-[95vh] ">
+        <Link className="absolute right-0 translate-y-[25%] translate-x-[-25%] z-10" href={"/"}>
+          <X size={36} className="text-white rounded-full p-1 bg-black/30" />
         </Link>
-        <Image
-          src={"/logo_ipuc.webp"}
-          width={300}
-          height={211}
-          style={{ width: "100%", height: "auto" }}
-          alt="Foto iglesia"
-        />
+        <div className="relative w-full h-[230px] ">
+          <Image
+            src={imgUrl}
+            className="object-cover"
+            fill
+            sizes="300px"
+            style={{ objectFit: "cover" }}
+            alt="Foto iglesia"
+            priority={true}
+          />
+        </div>
         <h1 className="text-2xl text-center font-medium break-words p-2">{templeData.congregacion}</h1>
         <div className="border-t border-solid border-gray-300 px-4 py-3 grid grid-cols-[2fr_1fr] ">
           {schedules}

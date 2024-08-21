@@ -1,3 +1,4 @@
+import "leaflet/dist/leaflet.css";
 import { initPreviewMap } from "@/map/initPreviewMap";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info } from "lucide-react";
