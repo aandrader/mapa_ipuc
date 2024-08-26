@@ -66,5 +66,7 @@ export function getUpdateDataDefer(newData: any, originalData: any) {
 }
 
 export function getImgUrl(templeId: string) {
-  return templeId ? process.env.NEXT_PUBLIC_CLOUDFRONT_URL + templeId + ".webp" : "/logo_ipuc.webp";
+  return templeId
+    ? "https://" + process.env.NEXT_PUBLIC_CLOUDFRONT_URL + "/" + templeId + ".webp"
+    : "/logo_ipuc.webp";
 }
