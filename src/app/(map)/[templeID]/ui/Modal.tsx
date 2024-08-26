@@ -3,12 +3,12 @@ import { CloseIcon, FacebookIcon, IconInstagram, MapsIcon, WebIcon, YoutubeIcon 
 import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";
-import { format12Hour } from "../../../../utils/utils";
 import { Instagram, X } from "lucide-react";
+import { format12Hour, getImgUrl } from "@/utils/utils";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios;
-  const imgUrl = templeData.img ?? "/logo_ipuc.webp";
+  const imgUrl = getImgUrl(templeData.imagen && templeData.id);
   const anchors = (
     <div className="grid grid-cols-1 gap-1 place-items-center">
       {templeData.facebook && (

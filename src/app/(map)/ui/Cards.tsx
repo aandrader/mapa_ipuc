@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { InfoAlert } from "./InfoAlert";
 import Link from "next/link";
 import { useMap } from "@/map/MapProvider";
+import { getImgUrl } from "@/utils/utils";
 
 interface CardsProps {
   filteredTemples: any;
@@ -23,7 +24,7 @@ export const Cards = ({ filteredTemples, setIsOpen }: CardsProps) => {
                 setIsOpen((isOpen: boolean) => !isOpen);
                 map.flyTo(temple.coordenadas, 16, { duration: 1.5 });
               }}
-              img={temple.img}
+              imgId={temple.imagen && temple.id}
               congregacion={temple.congregacion}
               municipio={temple.municipio}
             />
@@ -38,11 +39,11 @@ interface CardProps {
   onClick: () => void;
   congregacion: string;
   municipio: string;
-  img: string;
+  imgId: string;
 }
 
-const Card = ({ congregacion, municipio, img, onClick }: CardProps) => {
-  const imgUrl = img ?? "/logo_ipuc.webp";
+const Card = ({ congregacion, municipio, imgId, onClick }: CardProps) => {
+  const imgUrl = getImgUrl(imgId);
   return (
     <div
       className="  border border-solid break-words rounded-2xl border-gray-300 cursor-pointer overflow-hidden "

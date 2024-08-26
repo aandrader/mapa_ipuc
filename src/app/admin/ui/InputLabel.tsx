@@ -5,12 +5,14 @@ export function InputLabel({
   name,
   defaultValue,
   readOnly,
+  disabled,
   type = "text",
 }: {
   label: string;
   name: string;
   defaultValue?: string | null;
   readOnly?: boolean;
+  disabled?: boolean;
   type?: string;
 }) {
   return (
@@ -22,6 +24,7 @@ export function InputLabel({
         className={readOnly ? "focus-visible:ring-transparent" : ""}
         autoCapitalize="none"
         autoCorrect="off"
+        disabled={disabled}
         defaultValue={defaultValue ?? ""}
         readOnly={readOnly}
       />

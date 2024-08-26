@@ -11,7 +11,7 @@ const { password, ...columns } = getTableColumns(temples);
 
 export const fetchTemples = cache(async () => {
   const res = await pool.query(
-    "SELECT id,congregacion,municipio,coordenadas,img from temples where coordenadas is not null "
+    "SELECT id,congregacion,municipio,coordenadas,imagen from temples where coordenadas is not null "
   );
   return res.rows;
 });
@@ -96,10 +96,11 @@ export const addNewTemple = async (temple: any) => {
 
 export const updateTemple = async (newData: any, originalData: any) => {
   const updates = getUpdateDataDefer(newData, originalData);
-  console.log({ newData, originalData, updates });
+
   if (Object.keys(updates).length === 0) return;
 
   await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
+
   if (updates.coordenadas) {
     revalidatePath("/(map)", "layout");
   }

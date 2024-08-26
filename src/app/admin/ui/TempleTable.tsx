@@ -9,10 +9,15 @@ import { FormMap } from "./FormMap";
 import { useState } from "react";
 import { X } from "lucide-react";
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { uploadImage } from "@/actions/aws";
+import { getImgUrl } from "@/utils/utils";
 
 export const TempleTable = ({ temple }: any) => {
+  const initialImg = temple.imagen && getImgUrl(temple.id);
   const [readOnly, setReadOnly] = useState(true);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
+  const [image, setImage] = useState(initialImg);
   const [services, setServices] = useState(temple.horarios);
   const [map, setMap] = useState<any>();
   const router = useRouter();
@@ -23,7 +28,7 @@ export const TempleTable = ({ temple }: any) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    const newData = {
+    const newData: any = {
       facebook: data.facebook,
       youtube: data.youtube,
       instagram: data.instagram,
@@ -33,13 +38,20 @@ export const TempleTable = ({ temple }: any) => {
     };
 
     try {
+      if ((data.imagen as File).size) {
+        const formData = new FormData();
+        formData.append("file", data.imagen);
+        await uploadImage(temple.id, formData);
+        newData.imagen = true;
+      }
       await updateTemple(newData, temple);
       toast({
         title: "Informacion actualizada correctamente",
         variant: "success",
         // description: "Hubo un error actualizando la información.",
       });
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast({
         title: "Error",
         variant: "error",
@@ -54,8 +66,14 @@ export const TempleTable = ({ temple }: any) => {
     e.preventDefault();
     e.target.closest("form").reset();
     setServices(temple.horarios);
+    setImage(initialImg);
     map.fire("refresh", { templeLocation: temple.coordenadas });
     setReadOnly(true);
+  };
+
+  const onSelectImage = (e: any) => {
+    const file = e.target.files[0];
+    if (file) setImage(URL.createObjectURL(file));
   };
 
   const addService = () => {
@@ -140,7 +158,7 @@ export const TempleTable = ({ temple }: any) => {
         {schedule}
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 pb-2">
         <FormMap
           map={map}
           setMap={setMap}
@@ -151,11 +169,11 @@ export const TempleTable = ({ temple }: any) => {
         />
         <div className="flex flex-col gap-2">
           <p>Foto</p>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-col md:flex-row">
             <div className="relative w-[230px] h-[230px] grid place-items-center rounded-lg bg-slate-200">
-              {temple.img ? (
+              {image ? (
                 <Image
-                  src={temple.img}
+                  src={image}
                   className="rounded-lg object-cover"
                   fill
                   sizes="300px"
@@ -166,10 +184,12 @@ export const TempleTable = ({ temple }: any) => {
                 <span className="font-medium text-slate-500">Sin imagen</span>
               )}
             </div>
-
-            <Button className="w-min" type="button">
-              Actualizar foto
-            </Button>
+            {!readOnly && (
+              <div>
+                <p>Actualizar imagen</p>
+                <Input name="imagen" type="file" onChange={onSelectImage} />
+              </div>
+            )}
           </div>
         </div>
       </div>
