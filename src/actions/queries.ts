@@ -101,6 +101,8 @@ export const updateTemple = async (newData: any, originalData: any) => {
 
   await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
 
+  revalidatePath("/" + originalData.id, "page");
+
   if (updates.coordenadas) {
     revalidatePath("/(map)", "layout");
   }

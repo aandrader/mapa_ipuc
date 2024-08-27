@@ -7,7 +7,7 @@ import { updateTemple } from "@/actions/queries";
 import { useRouter } from "next/navigation";
 import { FormMap } from "./FormMap";
 import { useState } from "react";
-import { X } from "lucide-react";
+import { LoaderCircleIcon, X } from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { uploadImage } from "@/actions/aws";
@@ -16,6 +16,7 @@ import { getImgUrl } from "@/utils/utils";
 export const TempleTable = ({ temple }: any) => {
   const initialImg = temple.imagen && getImgUrl(temple.id);
   const [readOnly, setReadOnly] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
   const [image, setImage] = useState(initialImg);
   const [services, setServices] = useState(temple.horarios);
@@ -24,6 +25,7 @@ export const TempleTable = ({ temple }: any) => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
+    setIsLoading(true);
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
@@ -38,7 +40,7 @@ export const TempleTable = ({ temple }: any) => {
     };
 
     try {
-      if ((data.imagen as File).size) {
+      if (initialImg !== image) {
         const formData = new FormData();
         formData.append("file", data.imagen);
         await uploadImage(temple.id, formData);
@@ -58,6 +60,7 @@ export const TempleTable = ({ temple }: any) => {
         description: "Hubo un error actualizando la información.",
       });
     }
+    setIsLoading(false);
     setReadOnly(true);
     router.refresh();
   };
@@ -86,10 +89,10 @@ export const TempleTable = ({ temple }: any) => {
     </Button>
   ) : (
     <>
-      <Button type="button" onClick={onReset}>
+      <Button type="button" disabled={isLoading} onClick={onReset}>
         Cancelar
       </Button>
-      <Button>Guardar información</Button>
+      <Button disabled={isLoading}>Guardar información</Button>
     </>
   );
 
@@ -127,7 +130,9 @@ export const TempleTable = ({ temple }: any) => {
               {temple.municipio} - Distrito {temple.distrito}
             </span>
           </div>
-          <div className="flex gap-2">{buttons}</div>
+          <div className="flex gap-2 items-center">
+            {buttons} {isLoading && <LoaderCircleIcon strokeWidth={3} className="animate-spin" />}
+          </div>
         </div>
 
         <InputLabel

@@ -2,7 +2,6 @@
 
 import { authenticate } from "@/actions/auth";
 import { fetchTemplesByDistrict } from "@/actions/queries";
-import { divIcon } from "leaflet";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -23,10 +22,10 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
     setTemples(await fetchTemplesByDistrict(e.target.value));
   };
   return (
-    <form className="flex flex-col gap-2" action={dispatch}>
+    <form className="flex flex-col gap-2 " action={dispatch}>
       <h1 className="text-center font-medium text-2xl text-white mb-2">Panel administrativo Mapa Ipuc</h1>
       <select
-        className="rounded-lg px-2"
+        className="rounded-lg px-2 w-full"
         onChange={onChange}
         defaultValue={initialDistrict ?? "default"}
         name="district"
@@ -34,13 +33,14 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
         <option disabled value={"default"}>
           Seleccionar distrito
         </option>
+
         {users.map((user: any) => (
           <option key={user.distrito} value={user.distrito}>
             Distrito {user.distrito}
           </option>
         ))}
       </select>
-      <select className="rounded-lg px-2" defaultValue={initialTemple ?? "default"} name="user">
+      <select className="rounded-lg px-2 w-full" defaultValue={initialTemple ?? "default"} name="user">
         <option disabled value={"default"}>
           Seleccionar templo
         </option>

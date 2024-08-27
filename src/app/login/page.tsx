@@ -20,7 +20,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: an
         <h1>Mapa Ipuc</h1>
         <MapsIcon className="size-[28px]" />
       </Link>
-      <div className="h-[400px] max-w-[90%] grid place-items-center">
+      <div className="h-[400px] max-w-[90vw] grid place-items-center">
         <LoginForm
           users={users}
           temples={temples}
@@ -31,3 +31,8 @@ export default async function DashboardPage({ searchParams }: { searchParams: an
     </div>
   );
 }
+
+//sabaneta 001734
+//fatima 498057
+//envigado 110706
+// belen c 826020
