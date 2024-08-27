@@ -15,10 +15,10 @@ import { getImgUrl } from "@/utils/utils";
 
 export const TempleTable = ({ temple }: any) => {
   const initialImg = temple.imagen && getImgUrl(temple.id);
+  const [image, setImage] = useState(initialImg);
   const [readOnly, setReadOnly] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
-  const [image, setImage] = useState(initialImg);
   const [services, setServices] = useState(temple.horarios);
   const [map, setMap] = useState<any>();
   const router = useRouter();

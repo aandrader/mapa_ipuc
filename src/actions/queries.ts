@@ -40,6 +40,17 @@ export const fetchTemplesByDistrictAdmin = async (distrito: string) => {
     .where(eq(temples.distrito, Number(distrito)));
 };
 
+export const fetchTemplesByDistrictExcel = async (distrito: string) => {
+  return await db
+    .select({
+      congregacion: temples.congregacion,
+      municipio: temples.municipio,
+      password: temples.password,
+    })
+    .from(temples)
+    .where(eq(temples.distrito, Number(distrito)));
+};
+
 export const fetchAllId = async () => {
   const res = await pool.query(`SELECT id from temples`);
   return res.rows;

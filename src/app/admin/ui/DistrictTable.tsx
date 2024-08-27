@@ -6,6 +6,7 @@ import { useState } from "react";
 import { TableSearchInput } from "./TableSearchInput";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { DistrictOptions } from "./DistrictOptions";
 
 export const DistrictTable = ({ temples, userId }: any) => {
   const [filteredTemples, setFilteredTemples] = useState(temples);
@@ -76,7 +77,10 @@ export const DistrictTable = ({ temples, userId }: any) => {
     <div className="p-3">
       <div className="grid grid-rows-2 md:flex md:justify-between gap-2">
         <TableSearchInput setFilteredTemples={setFilteredTemples} templesArray={temples} />
-        <div className="flex gap-2">{buttons}</div>
+        <div className="flex gap-2">
+          {buttons}
+          <DistrictOptions district={userId} />
+        </div>
       </div>
 
       <Table>
