@@ -106,9 +106,18 @@ export const addNewTemple = async (temple: any) => {
 };
 
 export const updateTemple = async (newData: any, originalData: any) => {
+  const updatedImage = newData.imagen;
+  delete newData.imagen;
   const updates = getUpdateDataDefer(newData, originalData);
 
-  if (Object.keys(updates).length === 0) return { status: "no-change" };
+  if (Object.keys(updates).length === 0) {
+    if (updatedImage) {
+      revalidatePath("/" + originalData.id, "page");
+      revalidatePath("/(map)", "layout");
+      return { status: "updated" };
+    }
+    return { status: "no-change" };
+  }
 
   await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
 

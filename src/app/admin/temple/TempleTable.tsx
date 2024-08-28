@@ -44,7 +44,6 @@ export const TempleTable = ({ temple }: any) => {
     try {
       if (imageBlob) {
         const formData = new FormData();
-        console.log(imageBlob);
         formData.append("file", imageBlob);
         await uploadImage(temple.id, formData);
         newData.imagen = true;
