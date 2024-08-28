@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, Sheet } from "lucide-react";
 import { utils, writeFile } from "@e965/xlsx";
 
 export const DistrictOptions = ({ district }: { district: string }) => {
@@ -24,7 +24,8 @@ export const DistrictOptions = ({ district }: { district: string }) => {
         <EllipsisVertical />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem className=" cursor-pointer" onClick={onExcel}>
+        <DropdownMenuItem className="cursor-pointer flex gap-2" onClick={onExcel}>
+          <Sheet />
           Descargar base de datos en excel
         </DropdownMenuItem>
       </DropdownMenuContent>

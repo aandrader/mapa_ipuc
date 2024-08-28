@@ -12,9 +12,8 @@ const s3Client = new S3Client({
 });
 
 export async function uploadImage(id: string, formData: any) {
-  const image = formData.get("file") as File;
-
-  const buffer = await image.arrayBuffer();
+  const imageBlob = formData.get("file") as Blob;
+  const buffer = await imageBlob.arrayBuffer();
   const webpImage = await sharp(buffer).webp().toBuffer();
 
   const params = {

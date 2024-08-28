@@ -46,11 +46,17 @@ const Card = ({ congregacion, municipio, imgId, onClick }: CardProps) => {
   const imgUrl = getImgUrl(imgId);
   return (
     <div
-      className="  border border-solid break-words rounded-2xl border-gray-300 cursor-pointer overflow-hidden "
+      className="border h-full border-solid break-words rounded-2xl border-gray-300 cursor-pointer overflow-hidden "
       onClick={onClick}
     >
       <div className="relative w-full h-[105.5px] ">
-        <Image src={imgUrl} fill className="object-cover" alt="Foto iglesia" />
+        <Image
+          src={imgUrl}
+          fill
+          className="object-cover"
+          sizes="(max-width: 450px) 40vw, (max-width: 640px) 30vw, (max-width: 450px) 40vw , (max-width: 1024px) 18vw , 13vw"
+          alt="Foto iglesia"
+        />
       </div>
       <div className="px-1 py-3">
         <h2 className="text-center font-medium">{congregacion}</h2>

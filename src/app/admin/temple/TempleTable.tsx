@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { InputLabel } from "./InputLabel";
+import { InputLabel } from "../ui/InputLabel";
 import { toast } from "@/components/ui/use-toast";
 import { updateTemple } from "@/actions/queries";
 import { useRouter } from "next/navigation";
@@ -9,13 +9,15 @@ import { FormMap } from "./FormMap";
 import { useState } from "react";
 import { LoaderCircleIcon, X } from "lucide-react";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import { uploadImage } from "@/actions/aws";
 import { getImgUrl } from "@/utils/utils";
+import { ImageDialog } from "./ImageDialog";
+import { publish } from "@/utils/events";
 
 export const TempleTable = ({ temple }: any) => {
   const initialImg = temple.imagen && getImgUrl(temple.id);
-  const [image, setImage] = useState(initialImg);
+  const [imageUrl, setImageUrl] = useState(initialImg);
+  const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [readOnly, setReadOnly] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
@@ -28,30 +30,37 @@ export const TempleTable = ({ temple }: any) => {
     setIsLoading(true);
     const form = e.target;
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    const data = Object.fromEntries(formData) as any;
 
     const newData: any = {
-      facebook: data.facebook,
-      youtube: data.youtube,
-      instagram: data.instagram,
-      pagina: data.pagina,
+      facebook: data.facebook.trim(),
+      youtube: data.youtube.trim(),
+      instagram: data.instagram.trim(),
+      pagina: data.pagina.trim(),
       coordenadas: templeLocation,
       horarios: services,
     };
 
     try {
-      if (initialImg !== image) {
+      if (imageBlob) {
         const formData = new FormData();
-        formData.append("file", data.imagen);
+        console.log(imageBlob);
+        formData.append("file", imageBlob);
         await uploadImage(temple.id, formData);
         newData.imagen = true;
       }
-      await updateTemple(newData, temple);
-      toast({
-        title: "Informacion actualizada correctamente",
-        variant: "success",
-        // description: "Hubo un error actualizando la información.",
-      });
+      const { status } = await updateTemple(newData, temple);
+      if (status === "no-change") {
+        toast({
+          title: "No hay cambios por actualizar.",
+          variant: "success",
+        });
+      } else {
+        toast({
+          title: "Informacion actualizada correctamente",
+          variant: "success",
+        });
+      }
     } catch (err) {
       console.error(err);
       toast({
@@ -69,14 +78,9 @@ export const TempleTable = ({ temple }: any) => {
     e.preventDefault();
     e.target.closest("form").reset();
     setServices(temple.horarios);
-    setImage(initialImg);
+    setImageUrl(initialImg);
     map.fire("refresh", { templeLocation: temple.coordenadas });
     setReadOnly(true);
-  };
-
-  const onSelectImage = (e: any) => {
-    const file = e.target.files[0];
-    if (file) setImage(URL.createObjectURL(file));
   };
 
   const addService = () => {
@@ -176,9 +180,9 @@ export const TempleTable = ({ temple }: any) => {
           <p>Foto</p>
           <div className="flex gap-2 flex-col md:flex-row">
             <div className="relative w-[230px] h-[230px] grid place-items-center rounded-lg bg-slate-200">
-              {image ? (
+              {imageUrl ? (
                 <Image
-                  src={image}
+                  src={imageUrl}
                   className="rounded-lg object-cover"
                   fill
                   sizes="300px"
@@ -191,8 +195,10 @@ export const TempleTable = ({ temple }: any) => {
             </div>
             {!readOnly && (
               <div>
-                <p>Actualizar imagen</p>
-                <Input name="imagen" type="file" onChange={onSelectImage} />
+                <Button type="button" onClick={() => publish("openImageDialog")}>
+                  Actualizar imagen
+                </Button>
+                <ImageDialog image={imageUrl} setImageUrl={setImageUrl} setImageBlob={setImageBlob} />
               </div>
             )}
           </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CloseIcon, FacebookIcon, IconInstagram, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
+import { FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";

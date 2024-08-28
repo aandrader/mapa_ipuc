@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import { auth } from "../api/auth/auth";
 import { fetchTempleId, fetchTemplesByDistrictAdmin } from "@/actions/queries";
 import { Header } from "./ui/Header";
-import { DistrictTable } from "./ui/DistrictTable";
-import { TempleTable } from "./ui/TempleTable";
+import { DistrictTable } from "./district/DistrictTable";
+import { TempleTable } from "./temple/TempleTable";
 import { PasswordDialog } from "./ui/PasswordDialog";
 
 export const dynamic = "force-dynamic";

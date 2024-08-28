@@ -108,7 +108,7 @@ export const addNewTemple = async (temple: any) => {
 export const updateTemple = async (newData: any, originalData: any) => {
   const updates = getUpdateDataDefer(newData, originalData);
 
-  if (Object.keys(updates).length === 0) return;
+  if (Object.keys(updates).length === 0) return { status: "no-change" };
 
   await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
 
@@ -117,6 +117,8 @@ export const updateTemple = async (newData: any, originalData: any) => {
   if (updates.coordenadas) {
     revalidatePath("/(map)", "layout");
   }
+
+  return { status: "updated" };
 };
 
 export const changePassword = async (currentPassword: string, newPassword: string, session: any) => {

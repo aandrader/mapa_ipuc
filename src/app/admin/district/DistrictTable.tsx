@@ -7,6 +7,7 @@ import { TableSearchInput } from "./TableSearchInput";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { DistrictOptions } from "./DistrictOptions";
+import { toast } from "@/components/ui/use-toast";
 
 export const DistrictTable = ({ temples, userId }: any) => {
   const [filteredTemples, setFilteredTemples] = useState(temples);
@@ -23,20 +24,33 @@ export const DistrictTable = ({ temples, userId }: any) => {
   };
 
   const onClick = async () => {
-    const { congregacion, municipio } = newTemple;
+    const congregacion = newTemple.congregacion.trim();
+    const municipio = newTemple.municipio.trim();
     if (congregacion && municipio) {
-      const addedTemple = await addNewTemple({
-        id: formatTempleId(congregacion, municipio),
-        distrito: userId,
-        password: generateRandomPassword(),
-        congregacion,
-        municipio,
-      });
-      setFilteredTemples([addedTemple, ...filteredTemples]);
-      router.refresh();
+      try {
+        const addedTemple = await addNewTemple({
+          id: formatTempleId(congregacion, municipio),
+          distrito: userId,
+          password: generateRandomPassword(),
+          congregacion: congregacion.trim(),
+          municipio: municipio.trim(),
+        });
+        setFilteredTemples([addedTemple, ...filteredTemples]);
+        router.refresh();
+        setShowTemple(false);
+        setNewTemple({ congregacion: "", municipio: "" });
+        toast({
+          title: `Templo ${congregacion} - ${municipio} creado correctamente.`,
+          variant: "success",
+        });
+      } catch {
+        toast({
+          title: "Error",
+          variant: "destructive",
+          description: `No se pudo crear el nuevo templo ${congregacion} - ${municipio}. Busca si ya esta creado en la base de datos.`,
+        });
+      }
     }
-    setShowTemple(false);
-    setNewTemple({ congregacion: "", municipio: "" });
   };
 
   const newTempleRow = (
@@ -65,10 +79,10 @@ export const DistrictTable = ({ temples, userId }: any) => {
   );
 
   const buttons = showTemple ? (
-    <>
+    <div className="flex gap-2 ">
       <Button onClick={onClick}>Guardar nuevo templo</Button>
       <Button onClick={() => setShowTemple(false)}>Cancelar</Button>
-    </>
+    </div>
   ) : (
     <Button onClick={() => setShowTemple(true)}>Crear nuevo templo</Button>
   );
@@ -77,7 +91,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
     <div className="p-3">
       <div className="grid grid-rows-2 md:flex md:justify-between gap-2">
         <TableSearchInput setFilteredTemples={setFilteredTemples} templesArray={temples} />
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-between">
           {buttons}
           <DistrictOptions district={userId} />
         </div>
