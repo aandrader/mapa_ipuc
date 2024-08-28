@@ -7,12 +7,13 @@ import { updateTemple } from "@/actions/queries";
 import { useRouter } from "next/navigation";
 import { FormMap } from "./FormMap";
 import { useState } from "react";
-import { LoaderCircleIcon, X } from "lucide-react";
+import { Info, LoaderCircleIcon, X } from "lucide-react";
 import Image from "next/image";
 import { uploadImage } from "@/actions/aws";
 import { getImgUrl } from "@/utils/utils";
 import { ImageDialog } from "./ImageDialog";
 import { publish } from "@/utils/events";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export const TempleTable = ({ temple }: any) => {
   const initialImg = temple.imagen && getImgUrl(temple.id);
@@ -68,9 +69,9 @@ export const TempleTable = ({ temple }: any) => {
         description: "Hubo un error actualizando la información.",
       });
     }
+    router.refresh();
     setIsLoading(false);
     setReadOnly(true);
-    router.refresh();
   };
 
   const onReset = (e: any) => {
@@ -177,7 +178,7 @@ export const TempleTable = ({ temple }: any) => {
         />
         <div className="flex flex-col gap-2">
           <p>Foto</p>
-          <div className="flex gap-2 flex-col md:flex-row">
+          <div className="grid gap-2 grid-cols-1 lg:grid-cols-[230px_auto] ">
             <div className="relative w-[230px] h-[230px] grid place-items-center rounded-lg bg-slate-200">
               {imageUrl ? (
                 <Image
@@ -186,18 +187,23 @@ export const TempleTable = ({ temple }: any) => {
                   fill
                   sizes="300px"
                   alt="Foto iglesia"
-                  priority={true}
+                  unoptimized //fix nextjs cache images on update
                 />
               ) : (
                 <span className="font-medium text-slate-500">Sin imagen</span>
               )}
             </div>
             {!readOnly && (
-              <div>
-                <Button type="button" onClick={() => publish("openImageDialog")}>
+              <div className="flex flex-col gap-2">
+                <Button type="button" className="w-min" onClick={() => publish("openImageDialog")}>
                   Actualizar imagen
                 </Button>
-                <ImageDialog image={imageUrl} setImageUrl={setImageUrl} setImageBlob={setImageBlob} />
+                <p className="text-xs w-full">
+                  La actualización de la imagen puede tardar unos minutos en reflejarse en la página
+                  principal.
+                </p>
+
+                <ImageDialog imageUrl={imageUrl} setImageUrl={setImageUrl} setImageBlob={setImageBlob} />
               </div>
             )}
           </div>

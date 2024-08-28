@@ -9,9 +9,9 @@ import Image from "next/image";
 import { resizeImage } from "@/utils/utils";
 import { toast } from "@/components/ui/use-toast";
 
-export const ImageDialog = ({ image, setImageUrl, setImageBlob }: any) => {
+export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [previewImageUrl, setPreviewImageUrl] = useState(image);
+  const [previewImageUrl, setPreviewImageUrl] = useState(imageUrl);
   const [imageBlob, setPreviewImageBlob] = useState<Blob | null>(null);
 
   const dialogRef = useBackdrop(setIsOpen);
@@ -63,10 +63,11 @@ export const ImageDialog = ({ image, setImageUrl, setImageBlob }: any) => {
                 fill
                 sizes="95vw"
                 alt="Foto iglesia"
+                unoptimized
               />
             )}
           </div>
-          {previewImageUrl !== image && (
+          {previewImageUrl !== imageUrl && (
             <Button type="button" className="self-end" onClick={onClick}>
               Aceptar
             </Button>
