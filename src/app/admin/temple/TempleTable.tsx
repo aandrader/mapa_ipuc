@@ -16,7 +16,7 @@ import { publish } from "@/utils/events";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export const TempleTable = ({ temple }: any) => {
-  const initialImg = temple.imagen && getImgUrl(temple.id);
+  const initialImg = temple.imagen && getImgUrl(temple.id, { cache: false });
   const [imageUrl, setImageUrl] = useState(initialImg);
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [readOnly, setReadOnly] = useState(true);
@@ -187,7 +187,6 @@ export const TempleTable = ({ temple }: any) => {
                   fill
                   sizes="300px"
                   alt="Foto iglesia"
-                  unoptimized //fix nextjs cache images on update
                 />
               ) : (
                 <span className="font-medium text-slate-500">Sin imagen</span>
@@ -198,11 +197,6 @@ export const TempleTable = ({ temple }: any) => {
                 <Button type="button" className="w-min" onClick={() => publish("openImageDialog")}>
                   Actualizar imagen
                 </Button>
-                <p className="text-xs w-full">
-                  La actualización de la imagen puede tardar unos minutos en reflejarse en la página
-                  principal.
-                </p>
-
                 <ImageDialog imageUrl={imageUrl} setImageUrl={setImageUrl} setImageBlob={setImageBlob} />
               </div>
             )}

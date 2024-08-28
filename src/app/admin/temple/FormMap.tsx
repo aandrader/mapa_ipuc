@@ -37,8 +37,8 @@ export const FormMap = ({ map, setMap, setTempleLocation, templeLocation, coordi
         <AlertTitle>Advertencia</AlertTitle>
         <AlertDescription>
           Para obtener la ubicación del templo, es necesario pararse en la entrada del mismo y con el botón a
-          continuación actualizar la ubicación desde un celular o una tablet, ya que estos cuentan con una
-          geolocalización más precisa.
+          continuación actualizar la ubicación únicamente desde un celular o una tablet, ya que estos cuentan
+          con una geolocalización más precisa.
         </AlertDescription>
       </Alert>
       <div className="grid grid-cols-1 md:flex gap-2">

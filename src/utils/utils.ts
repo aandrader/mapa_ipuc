@@ -65,9 +65,10 @@ export function getUpdateDataDefer(newData: any, originalData: any) {
   return updates;
 }
 
-export function getImgUrl(templeId: string) {
+export function getImgUrl(templeId: string, options: { cache: boolean } = { cache: true }) {
+  const timestamp = options.cache ? "" : "?" + new Date().getTime();
   return templeId
-    ? "https://" + process.env.NEXT_PUBLIC_MEDIA_URL + "/" + templeId + ".webp"
+    ? "https://" + process.env.NEXT_PUBLIC_MEDIA_URL + "/" + templeId + ".webp" + timestamp
     : "/logo_ipuc.webp";
 }
 

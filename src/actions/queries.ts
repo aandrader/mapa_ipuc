@@ -106,30 +106,28 @@ export const addNewTemple = async (temple: any) => {
 };
 
 export const updateTemple = async (newData: any, originalData: any) => {
-  const updatedImage = newData.imagen;
-  delete newData.imagen;
+  let revalidateMap = false,
+    revalidateTemple = false;
+
+  //in browser image is true only when it's updated, but in db is always true once first updated.
+  const imageIsUpdated = newData.imagen;
   const updates = getUpdateDataDefer(newData, originalData);
 
-  if (updatedImage) {
-    revalidatePath("/" + originalData.id);
-    revalidatePath("/admin");
+  if (Object.keys(updates).length) {
+    await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
+    revalidateTemple = true;
   }
 
-  if (Object.keys(updates).length === 0) {
-    if (updatedImage) return { status: "updated" };
-
-    return { status: "no-change" };
+  if (imageIsUpdated || updates.coordenadas) {
+    revalidateMap = true;
+    revalidateTemple = true;
   }
 
-  await db.update(temples).set(updates).where(eq(temples.id, originalData.id));
+  if (revalidateTemple) revalidatePath("/" + originalData.id, "page");
 
-  if (!updatedImage) revalidatePath("/" + originalData.id, "page");
+  if (revalidateMap) revalidatePath("/(map)", "layout");
 
-  if (updates.coordenadas || updatedImage) {
-    revalidatePath("/(map)", "layout");
-  }
-
-  return { status: "updated" };
+  return { status: revalidateMap || revalidateTemple ? "updated" : "no-change" };
 };
 
 export const changePassword = async (currentPassword: string, newPassword: string, session: any) => {
