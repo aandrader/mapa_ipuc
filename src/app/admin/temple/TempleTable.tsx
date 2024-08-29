@@ -186,6 +186,7 @@ export const TempleTable = ({ temple }: any) => {
                   fill
                   sizes="300px"
                   alt="Foto iglesia"
+                  unoptimized
                 />
               ) : (
                 <span className="font-medium text-slate-500">Sin imagen</span>

@@ -20,6 +20,7 @@ export async function uploadImage(id: string, formData: any) {
     Bucket: process.env.BUCKET_NAME!,
     Key: id + ".webp",
     Body: webpImage,
+    CacheControl: "no-cache",
   };
 
   await s3Client.send(new PutObjectCommand(params));
