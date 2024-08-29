@@ -24,7 +24,8 @@ export const fetchTemplesByDistrict = async (distrito: string) => {
   return await db
     .select(columns)
     .from(temples)
-    .where(eq(temples.distrito, Number(distrito)));
+    .where(eq(temples.distrito, Number(distrito)))
+    .orderBy(temples.congregacion);
 };
 
 export const fetchTemplesByDistrictAdmin = async (distrito: string) => {
@@ -37,7 +38,8 @@ export const fetchTemplesByDistrictAdmin = async (distrito: string) => {
       password: temples.password,
     })
     .from(temples)
-    .where(eq(temples.distrito, Number(distrito)));
+    .where(eq(temples.distrito, Number(distrito)))
+    .orderBy(temples.congregacion);
 };
 
 export const fetchTemplesByDistrictExcel = async (distrito: string) => {
@@ -109,8 +111,6 @@ export const updateTemple = async (newData: any, originalData: any) => {
   let revalidateMap = false,
     revalidateTemple = false;
 
-  //in browser image is true only when it's updated, but in db is always true once first updated.
-  const imageIsUpdated = newData.imagen;
   const updates = getUpdateDataDefer(newData, originalData);
 
   if (Object.keys(updates).length) {
@@ -118,9 +118,8 @@ export const updateTemple = async (newData: any, originalData: any) => {
     revalidateTemple = true;
   }
 
-  if (imageIsUpdated || updates.coordenadas) {
+  if (updates.coordenadas) {
     revalidateMap = true;
-    revalidateTemple = true;
   }
 
   if (revalidateTemple) revalidatePath("/" + originalData.id, "page");

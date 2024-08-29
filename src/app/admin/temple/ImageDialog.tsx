@@ -60,8 +60,8 @@ export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
             <Info className="h-4 w-4" />
             <AlertTitle>Indicaciones</AlertTitle>
             <AlertDescription>
-              Tome una foto horizontal de la fachada del templo de dia donde se pueda identificar fácilmente.
-              La actualización de la imagen puede tardar unos minutos en reflejarse en la página principal.
+              Tome una foto horizontal del templo desde afuera, de lejos y de dia. La actualización de la
+              imagen puede tardar unas horas en reflejarse en la página principal.
             </AlertDescription>
           </Alert>
 
@@ -74,6 +74,7 @@ export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
                 fill
                 sizes="95vw"
                 alt="Foto iglesia"
+                unoptimized
               />
             )}
           </div>

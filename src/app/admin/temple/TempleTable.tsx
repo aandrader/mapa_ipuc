@@ -7,16 +7,15 @@ import { updateTemple } from "@/actions/queries";
 import { useRouter } from "next/navigation";
 import { FormMap } from "./FormMap";
 import { useState } from "react";
-import { Info, LoaderCircleIcon, X } from "lucide-react";
+import { LoaderCircleIcon, X } from "lucide-react";
 import Image from "next/image";
 import { uploadImage } from "@/actions/aws";
 import { getImgUrl } from "@/utils/utils";
 import { ImageDialog } from "./ImageDialog";
 import { publish } from "@/utils/events";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export const TempleTable = ({ temple }: any) => {
-  const initialImg = temple.imagen && getImgUrl(temple.id, { cache: false });
+  const initialImg = temple.imagen && getImgUrl(temple.id);
   const [imageUrl, setImageUrl] = useState(initialImg);
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [readOnly, setReadOnly] = useState(true);
@@ -50,14 +49,14 @@ export const TempleTable = ({ temple }: any) => {
         newData.imagen = true;
       }
       const { status } = await updateTemple(newData, temple);
-      if (status === "no-change") {
+      if (status === "updated" || newData.imagen) {
         toast({
-          title: "No hay cambios por actualizar.",
+          title: "Informacion actualizada correctamente",
           variant: "success",
         });
       } else {
         toast({
-          title: "Informacion actualizada correctamente",
+          title: "No hay cambios por actualizar.",
           variant: "success",
         });
       }
