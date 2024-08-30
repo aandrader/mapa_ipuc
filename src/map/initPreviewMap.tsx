@@ -41,11 +41,14 @@ export const initPreviewMap = async ({ L, setMap, setTempleLocation, coordinates
   map.on("refresh", (e) => {
     markerGroup.clearLayers();
     const templeLocation = (e as any).templeLocation;
+    if (!templeLocation) return;
+
     setTempleLocation(templeLocation);
     map.flyTo(templeLocation, 16, { duration: 1.5 });
     const marker = L.marker(templeLocation, { icon: icon }).on("click", () => {
       map.flyTo(templeLocation, 16, { duration: 1.5 });
     });
+
     markerGroup.addLayer(marker);
   });
 

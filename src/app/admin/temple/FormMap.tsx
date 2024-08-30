@@ -45,12 +45,14 @@ export const FormMap = ({ map, setMap, setTempleLocation, templeLocation, coordi
         <Button type="button" onClick={() => getLocation()} className={`${readOnly && "hidden"}`}>
           Actualizar ubicación
         </Button>
-        <IconButton
-          className="w-[100%] font-medium bg-gradient-to-r from-blue-ipuc-700 to-blue-500  "
-          href={"https://www.google.com/maps/place/" + templeLocation.join(",")}
-        >
-          <MapsIcon /> Ir al templo
-        </IconButton>
+        {templeLocation && (
+          <IconButton
+            className="w-[100%] font-medium bg-gradient-to-r from-blue-ipuc-700 to-blue-500  "
+            href={"https://www.google.com/maps/place/" + templeLocation.join(",")}
+          >
+            <MapsIcon /> Ir al templo
+          </IconButton>
+        )}
       </div>
     </div>
   );

@@ -78,6 +78,7 @@ export const TempleTable = ({ temple }: any) => {
     e.target.closest("form").reset();
     setServices(temple.horarios);
     setImageUrl(initialImg);
+    setTempleLocation(temple.coordenadas);
     map.fire("refresh", { templeLocation: temple.coordenadas });
     setReadOnly(true);
   };
