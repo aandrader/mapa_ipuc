@@ -50,7 +50,8 @@ export const fetchTemplesByDistrictExcel = async (distrito: string) => {
       password: temples.password,
     })
     .from(temples)
-    .where(eq(temples.distrito, Number(distrito)));
+    .where(eq(temples.distrito, Number(distrito)))
+    .orderBy(temples.congregacion);
 };
 
 export const fetchAllId = async () => {
