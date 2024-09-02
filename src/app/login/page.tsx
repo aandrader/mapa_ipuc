@@ -31,8 +31,3 @@ export default async function DashboardPage({ searchParams }: { searchParams: an
     </div>
   );
 }
-
-//sabaneta 001734
-//fatima 498057
-//envigado 110706
-// belen c 826020

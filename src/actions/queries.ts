@@ -55,7 +55,7 @@ export const fetchTemplesByDistrictExcel = async (distrito: string) => {
 };
 
 export const fetchAllId = async () => {
-  const res = await pool.query(`SELECT id from temples`);
+  const res = await pool.query(`SELECT id from temples where coordenadas is not null`);
   return res.rows;
 };
 
