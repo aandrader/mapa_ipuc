@@ -14,7 +14,7 @@ import { Info } from "lucide-react";
 export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [previewImageUrl, setPreviewImageUrl] = useState(imageUrl);
-  const [imageBlob, setPreviewImageBlob] = useState<Blob | null>(null);
+  const [previewImageBlob, setPreviewImageBlob] = useState<Blob | null>(null);
 
   const dialogRef = useBackdrop(setIsOpen);
 
@@ -23,6 +23,7 @@ export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
     if (!file) return;
     try {
       const blob = await resizeImage(file, 1000);
+      URL.revokeObjectURL(previewImageUrl);
       const url = URL.createObjectURL(blob);
       setPreviewImageBlob(blob);
       setPreviewImageUrl(url);
@@ -36,7 +37,7 @@ export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
   };
 
   const onClick = () => {
-    setImageBlob(imageBlob);
+    setImageBlob(previewImageBlob);
     setImageUrl(previewImageUrl);
     setIsOpen(false);
   };

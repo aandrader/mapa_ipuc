@@ -20,12 +20,12 @@ export const Dialog = () => {
       <div ref={dialogRef} className={`absolute absolute-center text-[15px] z-[9000] card p-5 w-[300px] `}>
         <div className="flex items-center">
           <h1 className="font-medium text-xl w-full leading-5 text-blue-ipuc-800">¡Dios le bendiga!</h1>
-          <CloseIcon className="size-8" onClick={() => setIsOpen(false)} />
+          <CloseIcon className="size-8 text-blue-ipuc-900" onClick={() => setIsOpen(false)} />
         </div>
-        <p className="mt-2">Soy Samuel Andrade, el desarrollador de Mapa Ipuc.</p>
-        <p>
-          Para agregar un templo o actualizar su información (ubicación, horarios de culto, foto o redes
-          sociales) por favor hacerme la solicitud por correo.
+        <p className="mt-2">
+          Soy
+          <span className="text-blue-ipuc-800 font-medium"> Samuel Andrade</span>, el desarrollador de Mapa
+          Ipuc.
         </p>
 
         <div className="flex items-center gap-1 mt-2">
@@ -41,10 +41,10 @@ export const Dialog = () => {
               rel="external"
               href={"https://www.instagram.com/sam_and_riv/"}
             >
-              <IconInstagram />
+              <IconInstagram className="size-10" />
             </Link>
             <Link target="_blank" rel="external" href={"https://co.linkedin.com/in/samuel-andrade-0718652a8"}>
-              <IconLinkedin />
+              <IconLinkedin className="size-10" />
             </Link>
           </div>
         </div>

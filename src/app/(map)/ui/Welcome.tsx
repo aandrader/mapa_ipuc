@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../../../components/Icons";
 import { useBackdrop } from "@/hooks/useBackdrop";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { publish } from "@/utils/events";
 
 let firstEnter = true;
 
@@ -10,6 +12,8 @@ export const Welcome = () => {
   const [isOpen, setIsOpen] = useState(typeof window === "undefined" || firstEnter);
   firstEnter = false;
   const welcomeRef = useBackdrop(setIsOpen);
+  const router = useRouter();
+
   return (
     <>
       <div
@@ -53,11 +57,16 @@ export const Welcome = () => {
           Su ubicación actual se marcará con un
           <IconUserLocation />
         </p>
-        <Link href={"/login"}>
-          <p className="underline text-blue-ipuc-200 cursor-pointer">
-            ¿Falta su congregación o desea modificarla? Contactarse.
+        <p>¿Falta su congregación o desea modificarla? Ingresar al panel administrativo.</p>
+        <div className="flex gap-3 mt-2 items-end">
+          <Button onClick={() => router.push("/login")} size="xs">
+            Iniciar sesión
+          </Button>
+          {/* <Button size="xs">Contacto</Button> */}
+          <p onClick={() => publish("openDialog")} className="text-[10px] underline cursor-pointer">
+            Software creado por Samuel Andrade
           </p>
-        </Link>
+        </div>
       </div>
     </>
   );

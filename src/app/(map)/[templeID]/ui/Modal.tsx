@@ -5,6 +5,7 @@ import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";
 import { Instagram, X } from "lucide-react";
 import { format12Hour, getImgUrl } from "@/utils/utils";
+import { DropdownMapApps } from "./DropdownMapApps";
 
 export const Modal = ({ templeData }: { templeData: any }) => {
   const schedule = templeData.horarios;
@@ -69,12 +70,7 @@ export const Modal = ({ templeData }: { templeData: any }) => {
         </div>
         <ClientButtons temple={templeData} />
         <div className="grid place-items-center p-3 border-t border-solid border-gray-300 sticky bottom-0 bg-white">
-          <IconButton
-            className="w-[100%] font-medium bg-gradient-to-r from-blue-ipuc-700 to-blue-500  "
-            href={"https://www.google.com/maps/place/" + templeData.coordenadas.join(",")}
-          >
-            <MapsIcon /> Ir al templo
-          </IconButton>
+          <DropdownMapApps coordenadas={templeData.coordenadas} />
         </div>
       </div>
     </div>

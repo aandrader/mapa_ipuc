@@ -23,7 +23,6 @@ export const TempleTable = ({ temple }: any) => {
   const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
   const [services, setServices] = useState(temple.horarios);
   const [map, setMap] = useState<any>();
-  const router = useRouter();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -68,9 +67,11 @@ export const TempleTable = ({ temple }: any) => {
         description: "Hubo un error actualizando la información.",
       });
     }
-    router.refresh();
+
     setIsLoading(false);
     setReadOnly(true);
+    URL.revokeObjectURL(imageUrl);
+    setImageUrl(initialImg);
   };
 
   const onReset = (e: any) => {
@@ -78,6 +79,7 @@ export const TempleTable = ({ temple }: any) => {
     e.target.closest("form").reset();
     setServices(temple.horarios);
     setImageUrl(initialImg);
+    URL.revokeObjectURL(imageUrl);
     setTempleLocation(temple.coordenadas);
     map.fire("refresh", { templeLocation: temple.coordenadas });
     setReadOnly(true);

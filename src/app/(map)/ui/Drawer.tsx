@@ -29,7 +29,7 @@ export const Drawer = ({ temples }: any) => {
       ref={drawerRef}
       className={`${
         !isOpen ? "invisible" : ""
-      } absolute absolute-center card h-[95%] w-[90%] sm:right-4 sm:translate-x-0 sm:w-[45%] md:w-[55%] lg:w-[60%] above-map `}
+      } absolute card h-[85vh] w-[90%] absolute-center-x sm:right-4 sm:translate-x-0 top-4  sm:w-[45%] md:w-[55%] lg:w-[60%] above-map `}
     >
       <header className="flex gap-4 justify-between visible relative">
         <SearchInput

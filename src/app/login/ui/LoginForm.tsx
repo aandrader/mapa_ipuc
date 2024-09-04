@@ -2,6 +2,8 @@
 
 import { authenticate } from "@/actions/auth";
 import { fetchTemplesByDistrict } from "@/actions/queries";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -11,9 +13,13 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
 
   useEffect(() => {
     if (state === "success") {
-      // redireccionar
-      // router.replace('/');
       window.location.replace(`/admin`);
+      return;
+    } else if (state === "wrongCredentials") {
+      toast({
+        title: "Contraseña incorrecta",
+        variant: "error",
+      });
     }
   }, [state]);
 
@@ -27,10 +33,11 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
       <select
         className="rounded-lg px-2 w-full"
         onChange={onChange}
-        defaultValue={initialDistrict ?? "default"}
+        defaultValue={initialDistrict ?? ""}
         name="district"
+        required
       >
-        <option disabled value={"default"}>
+        <option disabled value={""}>
           Seleccionar distrito
         </option>
 
@@ -40,8 +47,8 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
           </option>
         ))}
       </select>
-      <select className="rounded-lg px-2 w-full" defaultValue={initialTemple ?? "default"} name="user">
-        <option disabled value={"default"}>
+      <select className="rounded-lg px-2 w-full" defaultValue={initialTemple ?? ""} name="user" required>
+        <option disabled value={""}>
           Seleccionar templo
         </option>
         <option value="admin">Admin</option>
@@ -56,21 +63,37 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
         name="password"
         placeholder="Contraseña"
         type="password"
+        required
       ></input>
+      <ForgetPassword />
+
       <SubmitButton />
-      {state === "wrongCredentials" && <div className="text-white">Contraseña incorrecta</div>}
     </form>
+  );
+};
+
+const ForgetPassword = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <span onClick={() => setIsOpen(!isOpen)} className="text-white text-xs underline cursor-pointer">
+        ¿Olvidaste tu contraseña?
+      </span>
+      <p className={`${isOpen ? "" : "hidden"} text-white text-xs "`}>
+        Contactarse con decom distrital para reestablecerla.
+      </p>
+    </>
   );
 };
 
 const SubmitButton = () => {
   const { pending } = useFormStatus();
   return (
-    <button
-      className="rounded-lg bg-white text-blue-ipuc-800 font-medium disabled:bg-slate-400"
+    <Button
+      className="rounded-lg bg-white hover:bg-white/80 text-blue-ipuc-800 font-medium disabled:bg-slate-400"
       disabled={pending}
     >
       Iniciar sesión
-    </button>
+    </Button>
   );
 };

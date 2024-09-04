@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 interface IconButtonProps {
   children?: ReactNode;
-  href: string;
+  href?: string;
   className?: string;
 }
 
