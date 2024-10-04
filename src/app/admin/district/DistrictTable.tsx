@@ -1,7 +1,11 @@
 "use client";
-import { addNewTemple } from "@/actions/queries";
+import {
+  addNewTemple,
+  fetchTempleByDistrictAdminType,
+  fetchTemplesByDistrictAdminType,
+} from "@/actions/queries";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { formatTempleId, generateRandomPassword } from "@/utils/utils";
+import { formatTempleId, generateRandomPassword } from "@/utils";
 import { useState } from "react";
 import { TableSearchInput } from "./TableSearchInput";
 import { useRouter } from "next/navigation";
@@ -9,7 +13,13 @@ import { Button } from "@/components/ui/button";
 import { DistrictOptions } from "./DistrictOptions";
 import { toast } from "@/components/ui/use-toast";
 
-export const DistrictTable = ({ temples, userId }: any) => {
+export const DistrictTable = ({
+  temples,
+  userId,
+}: {
+  temples: fetchTemplesByDistrictAdminType;
+  userId: string;
+}) => {
   const [filteredTemples, setFilteredTemples] = useState(temples);
   const [newTemple, setNewTemple] = useState({ congregacion: "", municipio: "" });
   const [showTemple, setShowTemple] = useState(false);
@@ -30,7 +40,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
       try {
         const addedTemple = await addNewTemple({
           id: formatTempleId(congregacion, municipio),
-          distrito: userId,
+          distrito: Number(userId),
           password: generateRandomPassword(),
           congregacion: congregacion.trim(),
           municipio: municipio.trim(),
@@ -90,7 +100,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
   return (
     <div className="p-3">
       <div className="grid grid-rows-2 md:flex md:justify-between gap-2">
-        <TableSearchInput setFilteredTemples={setFilteredTemples} templesArray={temples} />
+        <TableSearchInput setFilteredTemples={setFilteredTemples} temples={temples} />
         <div className="flex gap-2 justify-between">
           {buttons}
           <DistrictOptions district={userId} />
@@ -107,7 +117,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
         </TableHeader>
         <TableBody>
           {showTemple && newTempleRow}
-          {filteredTemples.map((temple: any) => (
+          {filteredTemples.map((temple) => (
             <Row temple={temple} key={temple.id} />
           ))}
         </TableBody>
@@ -116,7 +126,7 @@ export const DistrictTable = ({ temples, userId }: any) => {
   );
 };
 
-const Row = ({ temple }: any) => {
+const Row = ({ temple }: { temple: fetchTempleByDistrictAdminType }) => {
   const togglePassword = (e: any) => {
     const input = e.target;
     const type = input.type;

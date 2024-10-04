@@ -1,25 +1,41 @@
 "use server";
 
 import { cache } from "react";
-import { db, pool } from "../db/db";
 import { revalidatePath } from "next/cache";
-import { temples, users } from "@/db/schema";
-import { eq, getTableColumns } from "drizzle-orm";
-import { getUpdateDataDefer } from "@/utils/utils";
+import { temples, users } from "../../db/schema";
+import { eq, getTableColumns, isNotNull } from "drizzle-orm";
+import { getUpdateDataDefer } from "@/utils";
+import { auth } from "@/app/api/auth/auth";
+import { db } from "../../db/db";
 
 const { password, ...columns } = getTableColumns(temples);
 
+// Utility type to get the awaited return type of any async function
+type QueryType<T extends (...args: any[]) => Promise<any>> =
+  // Get the return type of the function T
+  Awaited<ReturnType<T>>;
+
+export type fetchTemplesType = QueryType<typeof fetchTemples>;
+export type fetchTempleType = fetchTemplesType[number];
 export const fetchTemples = cache(async () => {
-  const res = await pool.query(
-    "SELECT id,congregacion,municipio,coordenadas,imagen from temples where coordenadas is not null "
-  );
-  return res.rows;
+  return await db
+    .select({
+      id: temples.id,
+      congregacion: temples.congregacion,
+      municipio: temples.municipio,
+      coordenadas: temples.coordenadas,
+      imagen: temples.imagen,
+    })
+    .from(temples)
+    .where(isNotNull(temples.coordenadas));
 });
 
+export type fetchTempleIdType = QueryType<typeof fetchTempleId>;
 export const fetchTempleId = cache(async (templeId: string) => {
   return (await db.select(columns).from(temples).where(eq(temples.id, templeId)))[0];
 });
 
+export type fetchTemplesByDistrictType = Awaited<ReturnType<typeof fetchTemplesByDistrict>>;
 export const fetchTemplesByDistrict = async (distrito: string) => {
   return await db
     .select(columns)
@@ -28,6 +44,8 @@ export const fetchTemplesByDistrict = async (distrito: string) => {
     .orderBy(temples.congregacion);
 };
 
+export type fetchTemplesByDistrictAdminType = QueryType<typeof fetchTemplesByDistrictAdmin>;
+export type fetchTempleByDistrictAdminType = fetchTemplesByDistrictAdminType[number];
 export const fetchTemplesByDistrictAdmin = async (distrito: string) => {
   return await db
     .select({
@@ -55,18 +73,31 @@ export const fetchTemplesByDistrictExcel = async (distrito: string) => {
 };
 
 export const fetchAllId = async () => {
-  const res = await pool.query(`SELECT id from temples where coordenadas is not null`);
-  return res.rows;
+  return await db
+    .select({
+      id: temples.id,
+    })
+    .from(temples)
+    .where(isNotNull(temples.coordenadas));
 };
 
 export const fetchNameId = async () => {
-  const res = await pool.query(`SELECT id,congregacion,municipio from temples`);
-  return res.rows;
+  return await db
+    .select({
+      id: temples.id,
+      congregacion: temples.congregacion,
+      municipio: temples.municipio,
+    })
+    .from(temples);
 };
 
+export type fetchUsersType = QueryType<typeof fetchUsers>;
 export const fetchUsers = async () => {
-  const res = await pool.query(`SELECT distrito from users`);
-  return res.rows;
+  return await db
+    .select({
+      distrito: users.distrito,
+    })
+    .from(users);
 };
 
 export const getAuthTemple = async (templeId: string) => {
@@ -86,8 +117,11 @@ export const getAuthAdmin = async (distrito: string) => {
       .where(eq(users.distrito, Number(distrito)))
   )[0];
 };
-
-export const addNewTemple = async (temple: any) => {
+type addNewTempleType = Pick<
+  fetchTempleByDistrictAdminType,
+  "id" | "congregacion" | "distrito" | "municipio" | "password"
+>;
+export const addNewTemple = async (temple: addNewTempleType): Promise<addNewTempleType> => {
   return (
     await db
       .insert(temples)
@@ -108,7 +142,9 @@ export const addNewTemple = async (temple: any) => {
   )[0];
 };
 
-export const updateTemple = async (newData: any, originalData: any) => {
+export type updateTempleDataType = Omit<fetchTempleIdType, "id" | "congregacion" | "distrito" | "municipio">;
+
+export const updateTemple = async (newData: updateTempleDataType, originalData: fetchTempleIdType) => {
   let revalidateMap = false,
     revalidateTemple = false;
 
@@ -130,10 +166,11 @@ export const updateTemple = async (newData: any, originalData: any) => {
   return { status: revalidateMap || revalidateTemple ? "updated" : "no-change" };
 };
 
-export const changePassword = async (currentPassword: string, newPassword: string, session: any) => {
-  const table = session.user.type === "admin" ? users : temples;
-  const column = session.user.type === "admin" ? users.distrito : temples.id;
-  const id = session.user.id;
+export const changePassword = async (currentPassword: string, newPassword: string) => {
+  const session = await auth();
+  const table = session!.user.type === "admin" ? users : temples;
+  const column = session!.user.type === "admin" ? users.distrito : temples.id;
+  const id = session!.user.id;
 
   const { password } = (await db.select({ password: table.password }).from(table).where(eq(column, id)))[0];
 

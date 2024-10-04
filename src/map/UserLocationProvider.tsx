@@ -1,13 +1,20 @@
 "use client";
 import { LatLngTuple } from "leaflet";
-import { useContext, createContext, ReactNode, useState } from "react";
+import { useContext, createContext, ReactNode, useState, Dispatch, SetStateAction } from "react";
 
-const UserLocationContext = createContext<any>({});
+type userLocationType = LatLngTuple | [];
 
-export const useUserLocation = () => useContext(UserLocationContext);
+type contextType = {
+  userLocation: userLocationType;
+  setUserLocation: Dispatch<SetStateAction<userLocationType>>;
+};
+
+const UserLocationContext = createContext<contextType | null>(null);
+
+export const useUserLocation = () => useContext(UserLocationContext) as contextType;
 
 export default function UserLocationProvider({ children }: { children: ReactNode }) {
-  const [userLocation, setUserLocation] = useState<LatLngTuple | []>([]);
+  const [userLocation, setUserLocation] = useState<userLocationType>([]);
   return (
     <UserLocationContext.Provider value={{ userLocation, setUserLocation }}>
       {children}

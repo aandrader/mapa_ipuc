@@ -1,13 +1,20 @@
 "use client";
 
-import { authenticate } from "@/actions/auth";
-import { fetchTemplesByDistrict } from "@/actions/queries";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+import { fetchTemplesByDistrict, fetchTemplesByDistrictType, fetchUsersType } from "@/actions/queries";
+import { authenticate } from "@/actions/auth";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
-export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: any) => {
+interface Props {
+  users: fetchUsersType;
+  temples: fetchTemplesByDistrictType | [];
+  initialTemple: string;
+  initialDistrict: string;
+}
+
+export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: Props) => {
   const [templesState, setTemples] = useState(temples);
   const [state, dispatch] = useFormState(authenticate, undefined);
 
@@ -41,7 +48,7 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
           Seleccionar distrito
         </option>
 
-        {users.map((user: any) => (
+        {users.map((user) => (
           <option key={user.distrito} value={user.distrito}>
             Distrito {user.distrito}
           </option>
@@ -52,7 +59,7 @@ export const LoginForm = ({ users, temples, initialTemple, initialDistrict }: an
           Seleccionar templo
         </option>
         <option value="admin">Admin</option>
-        {templesState.map((temple: any) => (
+        {templesState.map((temple) => (
           <option key={temple.id} value={temple.id}>
             {temple.congregacion} - {temple.municipio}
           </option>

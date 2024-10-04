@@ -9,8 +9,9 @@ import { PasswordDialog } from "./ui/PasswordDialog";
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const session = (await auth()) as any;
+  const session = await auth();
   if (!session) redirect("/login");
+  if (!session.user) redirect("/login");
   const id = session.user.id;
 
   if (session.user.type === "admin") {
@@ -19,7 +20,7 @@ export default async function AdminPage() {
       <>
         <Header title={"Distrito " + id + " Panel administrativo"} />
         <DistrictTable temples={temples} userId={id} />
-        <PasswordDialog session={session} />
+        <PasswordDialog />
       </>
     );
   } else {
@@ -28,7 +29,7 @@ export default async function AdminPage() {
       <>
         <Header title={"Panel administrativo"} />
         <TempleTable temple={temple} />
-        <PasswordDialog session={session} />
+        <PasswordDialog />
       </>
     );
   }

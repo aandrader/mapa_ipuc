@@ -1,10 +1,17 @@
-import { filterTemples, removeAccents } from "@/utils/utils";
+import { fetchTemplesByDistrictAdminType } from "@/actions/queries";
+import { filterTemples, removeAccents } from "@/utils";
+import { Dispatch, SetStateAction } from "react";
 
-export const TableSearchInput = ({ templesArray, setFilteredTemples }: any) => {
+interface Props {
+  temples: fetchTemplesByDistrictAdminType;
+  setFilteredTemples: Dispatch<SetStateAction<fetchTemplesByDistrictAdminType>>;
+}
+
+export const TableSearchInput = ({ temples, setFilteredTemples }: Props) => {
   const filterTempleArray = (value: string) => {
     const search = removeAccents(value.toLowerCase());
-    if (!templesArray) return;
-    const filteredArray = filterTemples(templesArray, search);
+    if (!temples) return;
+    const filteredArray = filterTemples(temples, search);
     setFilteredTemples(filteredArray);
   };
   return (

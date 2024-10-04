@@ -1,17 +1,23 @@
 "use client";
 import { useBackdrop } from "@/hooks/useBackdrop";
-import { subscribe, unsubscribe } from "@/utils/events";
-import { useEffect, useState } from "react";
+import { subscribe, unsubscribe } from "@/utils";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { CloseIcon } from "@/components/Icons";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { resizeImage } from "@/utils/utils";
+import { resizeImage } from "@/utils";
 import { toast } from "@/components/ui/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info } from "lucide-react";
 
-export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
+interface Props {
+  imageUrl: string | false;
+  setImageBlob: Dispatch<SetStateAction<Blob | null>>;
+  setImageUrl: Dispatch<SetStateAction<string | false>>;
+}
+
+export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [previewImageUrl, setPreviewImageUrl] = useState(imageUrl);
   const [previewImageBlob, setPreviewImageBlob] = useState<Blob | null>(null);
@@ -23,7 +29,7 @@ export const ImageDialog = ({ imageUrl, setImageUrl, setImageBlob }: any) => {
     if (!file) return;
     try {
       const blob = await resizeImage(file, 1000);
-      URL.revokeObjectURL(previewImageUrl);
+      if (previewImageUrl) URL.revokeObjectURL(previewImageUrl);
       const url = URL.createObjectURL(blob);
       setPreviewImageBlob(blob);
       setPreviewImageUrl(url);

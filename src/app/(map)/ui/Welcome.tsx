@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "../../../components/Icons";
+import { CloseIcon, MapsIcon, IconUserLocation, IconChurch } from "@/components/Icons";
 import { useBackdrop } from "@/hooks/useBackdrop";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { publish } from "@/utils/events";
+import { publish } from "@/utils";
 
 let firstEnter = true;
 

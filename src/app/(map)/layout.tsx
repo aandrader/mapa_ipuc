@@ -1,5 +1,5 @@
 import { Drawer } from "@/app/(map)/ui/Drawer";
-import { fetchTemples } from "../../actions/queries";
+import { fetchTemples } from "@/actions/queries";
 import MapProvider from "@/map/MapProvider";
 
 export default async function MapsLayout({ children }: { children: React.ReactNode }) {

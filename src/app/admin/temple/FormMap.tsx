@@ -1,22 +1,19 @@
 import "leaflet/dist/leaflet.css";
-import { initPreviewMap } from "@/map/initPreviewMap";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Info } from "lucide-react";
 import { IconButton } from "@/components/IconButton";
 import { MapsIcon } from "@/components/Icons";
-import { useEffect } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import { Map } from "leaflet";
 
-export const FormMap = ({ map, setMap, setTempleLocation, templeLocation, coordinates, readOnly }: any) => {
-  useEffect(() => {
-    import("leaflet").then((L) => initPreviewMap({ L, setMap, setTempleLocation, coordinates }));
-    return () => {
-      map?.remove();
-    };
-    // eslint-disable-next-line
-  }, []);
+interface Props {
+  map?: Map;
+  templeLocation: [number, number] | null;
+  readOnly: boolean;
+}
 
+export const FormMap = ({ map, templeLocation, readOnly }: Props) => {
   const getLocation = () => {
     if (navigator.geolocation) {
       map!.locate({ enableHighAccuracy: true });

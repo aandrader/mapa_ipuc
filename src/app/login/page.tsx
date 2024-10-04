@@ -5,7 +5,11 @@ import { LoginForm } from "./ui/LoginForm";
 import { MapsIcon } from "@/components/Icons";
 import Link from "next/link";
 
-export default async function DashboardPage({ searchParams }: { searchParams: any }) {
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: { d: string; temple: string };
+}) {
   const session = await auth();
   if (session) redirect("/admin");
   const users = await fetchUsers();

@@ -6,8 +6,9 @@ import { useSortedTemples } from "@/hooks/useSortedTemples";
 import { BackIcon } from "@/components/Icons";
 import { Welcome } from "@/app/(map)/ui/Welcome";
 import { SearchInput } from "./SearchInput";
+import { fetchTemplesType } from "@/actions/queries";
 
-export const Drawer = ({ temples }: any) => {
+export const Drawer = ({ temples }: { temples: fetchTemplesType }) => {
   const [isOpen, setIsOpen] = useState(false);
   const drawerRef = useBackdrop(setIsOpen);
   const sortedTemples = useSortedTemples(temples);
@@ -35,7 +36,7 @@ export const Drawer = ({ temples }: any) => {
         <SearchInput
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          templesArray={sortedTemples}
+          temples={sortedTemples}
           setFilteredTemples={setFilteredTemples}
         />
         {inputIcon}

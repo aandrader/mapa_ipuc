@@ -9,7 +9,7 @@ import {
 import { logout } from "@/actions/auth";
 import { MapsIcon } from "@/components/Icons";
 import { Button } from "@/components/ui/button";
-import { publish } from "@/utils/events";
+import { publish } from "@/utils";
 import Link from "next/link";
 import { AlignJustify, KeyRound, LogOut } from "lucide-react";
 

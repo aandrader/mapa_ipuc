@@ -1,13 +1,13 @@
 "use client";
-import { useBackdrop } from "@/hooks/useBackdrop";
-import { subscribe, unsubscribe } from "@/utils/events";
 import { useEffect, useState } from "react";
+import { useBackdrop } from "@/hooks/useBackdrop";
+import { changePassword } from "@/actions/queries";
+import { subscribe, unsubscribe } from "@/utils";
 import { CloseIcon } from "@/components/Icons";
 import { InputLabel } from "./InputLabel";
 import { toast } from "@/components/ui/use-toast";
-import { changePassword } from "@/actions/queries";
 
-export const PasswordDialog = ({ session }: any) => {
+export const PasswordDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useBackdrop(setIsOpen);
 
@@ -42,7 +42,7 @@ export const PasswordDialog = ({ session }: any) => {
       });
     }
 
-    const { ok } = await changePassword(currentPassword, newPassword1, session);
+    const { ok } = await changePassword(currentPassword, newPassword1);
     if (ok) {
       toast({
         title: "Contraseña cambiada correctamente",

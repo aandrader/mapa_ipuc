@@ -1,15 +1,16 @@
 import Link from "next/link";
-import { FacebookIcon, MapsIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
+import { FacebookIcon, WebIcon, YoutubeIcon } from "@/components/Icons";
 import Image from "next/image";
 import { IconButton } from "../../../../components/IconButton";
 import { ClientButtons } from "./ClientButtons";
 import { Instagram, X } from "lucide-react";
-import { format12Hour, getImgUrl } from "@/utils/utils";
+import { format12Hour, getImgUrl } from "@/utils";
 import { DropdownMapApps } from "./DropdownMapApps";
+import { fetchTempleIdType } from "@/actions/queries";
 
-export const Modal = ({ templeData }: { templeData: any }) => {
+export const Modal = ({ templeData }: { templeData: fetchTempleIdType }) => {
   const schedule = templeData.horarios;
-  const imgUrl = getImgUrl(templeData.imagen && templeData.id);
+  const imgUrl = getImgUrl(templeData.imagen!! && templeData.id);
   const anchors = (
     <div className="grid grid-cols-1 gap-1 place-items-center">
       {templeData.facebook && (
@@ -39,7 +40,7 @@ export const Modal = ({ templeData }: { templeData: any }) => {
   );
   const schedules = (
     <div className="flex justify-center items-start flex-col">
-      {schedule.map((service: any) => (
+      {schedule.map((service) => (
         <li className="font-medium " key={service.dia}>
           <b>{service.dia}</b>: {format12Hour(service.hora)}
         </li>
@@ -70,7 +71,7 @@ export const Modal = ({ templeData }: { templeData: any }) => {
         </div>
         <ClientButtons temple={templeData} />
         <div className="grid place-items-center p-3 border-t border-solid border-gray-300 sticky bottom-0 bg-white">
-          <DropdownMapApps coordenadas={templeData.coordenadas} />
+          <DropdownMapApps coordinates={templeData.coordenadas!} />
         </div>
       </div>
     </div>

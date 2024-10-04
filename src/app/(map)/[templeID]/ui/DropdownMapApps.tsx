@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export const DropdownMapApps = ({ coordenadas }: any) => {
+export const DropdownMapApps = ({ coordinates }: { coordinates: [number, number] }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export const DropdownMapApps = ({ coordenadas }: any) => {
           <div className="relative">
             <IconButton
               className="font-medium bg-green-900 hover:bg-green-900/90  cursor-pointer "
-              href={"https://www.google.com/maps/place/" + coordenadas.join(",")}
+              href={"https://www.google.com/maps/place/" + coordinates.join(",")}
             >
               <IconGoogleMaps /> Abrir Google Maps
             </IconButton>
@@ -35,7 +35,7 @@ export const DropdownMapApps = ({ coordenadas }: any) => {
         <DropdownMenuItem>
           <IconButton
             className="w-[100%] font-medium text-bla bg-[#33ccff] hover:bg-[#33ccff]/80 cursor-pointer "
-            href={"https://www.waze.com/live-map/directions?to=" + coordenadas.join(",")}
+            href={"https://www.waze.com/live-map/directions?to=" + coordinates.join(",")}
           >
             <IconWaze /> Abrir Waze
           </IconButton>

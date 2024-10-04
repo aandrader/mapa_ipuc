@@ -1,6 +1,6 @@
 "use client";
 import { useBackdrop } from "@/hooks/useBackdrop";
-import { subscribe, unsubscribe } from "@/utils/events";
+import { subscribe, unsubscribe } from "@/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CloseIcon, IconInstagram, IconLinkedin } from "@/components/Icons";

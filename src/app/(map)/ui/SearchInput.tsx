@@ -1,19 +1,19 @@
-import { templeDataType } from "@/data/templeTypes";
-import { filterTemples, removeAccents } from "@/utils/utils";
+import { fetchTemplesType } from "@/actions/queries";
+import { filterTemples, removeAccents } from "@/utils";
 import { Dispatch, SetStateAction } from "react";
 
 interface SearchInputProps {
-  templesArray: [string, templeDataType][] | undefined;
-  setFilteredTemples: Dispatch<SetStateAction<[string, templeDataType][]>>;
+  temples: fetchTemplesType;
+  setFilteredTemples: Dispatch<SetStateAction<fetchTemplesType>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const SearchInput = ({ templesArray, setFilteredTemples, isOpen, setIsOpen }: SearchInputProps) => {
+export const SearchInput = ({ temples, setFilteredTemples, isOpen, setIsOpen }: SearchInputProps) => {
   const filterTempleArray = (value: string) => {
     const search = removeAccents(value.toLowerCase());
-    if (!templesArray) return;
-    const filteredArray = filterTemples(templesArray, search);
+    if (!temples) return;
+    const filteredArray = filterTemples(temples, search);
     setFilteredTemples(filteredArray);
   };
   return (

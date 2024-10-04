@@ -3,10 +3,11 @@ import { Dispatch, SetStateAction } from "react";
 import { InfoAlert } from "./InfoAlert";
 import Link from "next/link";
 import { useMap } from "@/map/MapProvider";
-import { getImgUrl } from "@/utils/utils";
+import { getImgUrl } from "@/utils";
+import { fetchTemplesType, fetchTempleType } from "@/actions/queries";
 
 interface CardsProps {
-  filteredTemples: any;
+  filteredTemples: fetchTemplesType;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -16,15 +17,15 @@ export const Cards = ({ filteredTemples, setIsOpen }: CardsProps) => {
     <div className=" overflow-y-scroll h-[calc(100%-(43px+16px))] px-4 pt-4 mt-[1px] ">
       <InfoAlert />
       <div className="grid gap-2 auto-rows-min grid-cols-2 min-[450px]:grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center mt-4 ">
-        {filteredTemples?.map((temple: any) => (
+        {filteredTemples.map((temple: fetchTempleType) => (
           <Link prefetch={false} href={"/" + temple.id} key={temple.id}>
             <Card
               onClick={() => {
                 // if (window.innerWidth <= 640)
                 setIsOpen((isOpen: boolean) => !isOpen);
-                map.flyTo(temple.coordenadas, 16, { duration: 1.5 });
+                map.flyTo(temple.coordenadas!, 16, { duration: 1.5 });
               }}
-              imgId={temple.imagen && temple.id}
+              imgId={temple.imagen!! && temple.id}
               congregacion={temple.congregacion}
               municipio={temple.municipio}
             />
@@ -39,7 +40,7 @@ interface CardProps {
   onClick: () => void;
   congregacion: string;
   municipio: string;
-  imgId: string;
+  imgId: string | false;
 }
 
 const Card = ({ congregacion, municipio, imgId, onClick }: CardProps) => {

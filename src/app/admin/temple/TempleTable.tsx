@@ -1,28 +1,28 @@
 "use client";
 
+import { useState } from "react";
+import { Schedule } from "./Schedule";
+import { TemplePhoto } from "./TemplePhoto";
+import { FormMap } from "./FormMap";
+import { useInitPreviewMap } from "@/map/useInitPreviewMap";
+import { uploadImage } from "@/actions/aws";
+import { getImgUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { InputLabel } from "../ui/InputLabel";
 import { toast } from "@/components/ui/use-toast";
-import { updateTemple } from "@/actions/queries";
-import { useRouter } from "next/navigation";
-import { FormMap } from "./FormMap";
-import { useState } from "react";
-import { LoaderCircleIcon, X } from "lucide-react";
-import Image from "next/image";
-import { uploadImage } from "@/actions/aws";
-import { getImgUrl } from "@/utils/utils";
-import { ImageDialog } from "./ImageDialog";
-import { publish } from "@/utils/events";
+import { LoaderCircleIcon } from "lucide-react";
+import { fetchTempleIdType, updateTemple } from "@/actions/queries";
 
-export const TempleTable = ({ temple }: any) => {
-  const initialImg = temple.imagen && getImgUrl(temple.id);
+export const TempleTable = ({ temple }: { temple: fetchTempleIdType }) => {
+  const initialImg = temple.imagen!! && getImgUrl(temple.id);
+  const initialCoordinates = temple.coordenadas!;
   const [imageUrl, setImageUrl] = useState(initialImg);
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const [readOnly, setReadOnly] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [templeLocation, setTempleLocation] = useState(temple.coordenadas);
+  const [templeLocation, setTempleLocation] = useState(initialCoordinates);
   const [services, setServices] = useState(temple.horarios);
-  const [map, setMap] = useState<any>();
+  const map = useInitPreviewMap({ templeLocation, setTempleLocation });
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -31,13 +31,14 @@ export const TempleTable = ({ temple }: any) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData) as any;
 
-    const newData: any = {
+    const newData = {
       facebook: data.facebook.trim(),
       youtube: data.youtube.trim(),
       instagram: data.instagram.trim(),
       pagina: data.pagina.trim(),
       coordenadas: templeLocation,
       horarios: services,
+      imagen: false,
     };
 
     try {
@@ -70,7 +71,7 @@ export const TempleTable = ({ temple }: any) => {
 
     setIsLoading(false);
     setReadOnly(true);
-    URL.revokeObjectURL(imageUrl);
+    if (imageUrl) URL.revokeObjectURL(imageUrl);
     setImageUrl(initialImg);
   };
 
@@ -79,14 +80,10 @@ export const TempleTable = ({ temple }: any) => {
     e.target.closest("form").reset();
     setServices(temple.horarios);
     setImageUrl(initialImg);
-    URL.revokeObjectURL(imageUrl);
-    setTempleLocation(temple.coordenadas);
-    map.fire("refresh", { templeLocation: temple.coordenadas });
+    if (imageUrl) URL.revokeObjectURL(imageUrl);
+    setTempleLocation(initialCoordinates);
+    if (map) map.fire("refresh", { templeLocation: initialCoordinates });
     setReadOnly(true);
-  };
-
-  const addService = () => {
-    setServices([...services, { dia: "", hora: "" }]);
   };
 
   const buttons = readOnly ? (
@@ -100,30 +97,6 @@ export const TempleTable = ({ temple }: any) => {
       </Button>
       <Button disabled={isLoading}>Guardar información</Button>
     </>
-  );
-
-  const schedule = (
-    <div className="flex gap-1 flex-col">
-      <p>Horarios de culto</p>
-      {services.map((horario: any, index: any) => (
-        <ScheduleRow
-          horario={horario}
-          key={horario.dia + horario.hora}
-          index={index}
-          setServices={setServices}
-          readOnly={readOnly}
-        />
-      ))}
-
-      <Button
-        type="button"
-        variant="outline"
-        className={`${readOnly && "hidden"} w-min`}
-        onClick={addService}
-      >
-        Agregar dia
-      </Button>
-    </div>
   );
 
   return (
@@ -165,89 +138,18 @@ export const TempleTable = ({ temple }: any) => {
           defaultValue={temple.pagina}
           readOnly={readOnly}
         />
-
-        {schedule}
+        <Schedule services={services} setServices={setServices} readOnly={readOnly} />
       </div>
 
       <div className="flex flex-col gap-4 pb-2">
-        <FormMap
-          map={map}
-          setMap={setMap}
-          templeLocation={templeLocation}
-          setTempleLocation={setTempleLocation}
-          coordinates={temple.coordenadas}
+        <FormMap map={map} templeLocation={templeLocation} readOnly={readOnly} />
+        <TemplePhoto
+          imageUrl={imageUrl}
           readOnly={readOnly}
+          setImageBlob={setImageBlob}
+          setImageUrl={setImageUrl}
         />
-        <div className="flex flex-col gap-2">
-          <p>Foto</p>
-          <div className="grid gap-2 grid-cols-1 lg:grid-cols-[230px_auto] ">
-            <div className="relative w-[230px] h-[230px] grid place-items-center rounded-lg bg-slate-200">
-              {imageUrl ? (
-                <Image
-                  src={imageUrl}
-                  className="rounded-lg object-cover"
-                  fill
-                  sizes="300px"
-                  alt="Foto iglesia"
-                  unoptimized
-                />
-              ) : (
-                <span className="font-medium text-slate-500">Sin imagen</span>
-              )}
-            </div>
-            {!readOnly && (
-              <div className="flex flex-col gap-2">
-                <Button type="button" className="w-min" onClick={() => publish("openImageDialog")}>
-                  Actualizar imagen
-                </Button>
-                <ImageDialog imageUrl={imageUrl} setImageUrl={setImageUrl} setImageBlob={setImageBlob} />
-              </div>
-            )}
-          </div>
-        </div>
       </div>
     </form>
-  );
-};
-
-const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-
-const ScheduleRow = ({ horario, index, setServices, readOnly }: any) => {
-  const deleteService = () => {
-    setServices((services: any) => services.toSpliced(index, 1));
-  };
-
-  const onChange = (e: any) => {
-    e.preventDefault();
-    setServices((services: any) => {
-      const copy = JSON.parse(JSON.stringify(services));
-      const { name, value } = e.target;
-      copy[index][name] = value;
-      return copy;
-    });
-  };
-  return (
-    <div className="flex gap-3">
-      <select
-        className="rounded-lg px-2"
-        onChange={onChange}
-        value={horario.dia}
-        disabled={readOnly}
-        name="dia"
-      >
-        {days.map((day) => (
-          <option key={day}>{day}</option>
-        ))}
-      </select>
-      <input type="time" readOnly={readOnly} name="hora" value={horario.hora} onChange={onChange} />
-      <Button
-        className={`${readOnly && "hidden"} p-1`}
-        type="button"
-        variant="outline"
-        onClick={() => deleteService()}
-      >
-        <X />
-      </Button>
-    </div>
   );
 };

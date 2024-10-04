@@ -1,30 +1,25 @@
 "use client";
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useContext } from "react";
 import "leaflet/dist/leaflet.css";
-import { useRouter } from "next/navigation";
-import { type Map } from "leaflet";
-import { useUserLocation } from "./UserLocationProvider";
-import { initMap } from "./initMap";
+import { useInitMap } from "./useInitMap";
+import { fetchTemplesType } from "@/actions/queries";
+import { Map } from "leaflet";
 
-const MapContext = createContext<any>({});
+const MapContext = createContext<Map | null>(null);
 
-export const useMap = () => useContext(MapContext);
+export const useMap = () => useContext(MapContext) as Map;
 
-export default function MapProvider({ children, temples }: { children: ReactNode; temples: any }) {
-  const [map, setMap] = useState<Map>();
-  const router = useRouter();
-  const { setUserLocation } = useUserLocation();
-
-  useEffect(() => {
-    import("leaflet").then((L) => initMap({ L, setMap, setUserLocation, router, temples }));
-    return () => {
-      map?.remove();
-    };
-    // eslint-disable-next-line
-  }, []);
+export default function MapProvider({
+  children,
+  temples,
+}: {
+  children: ReactNode;
+  temples: fetchTemplesType;
+}) {
+  const map = useInitMap({ temples });
 
   return (
-    <MapContext.Provider value={map}>
+    <MapContext.Provider value={map!}>
       <div id="map" className="w-screen h-screen skeleton"></div>
       {children}
     </MapContext.Provider>

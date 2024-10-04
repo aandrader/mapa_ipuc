@@ -1,9 +1,10 @@
 "use client";
 
+import { fetchTempleIdType } from "@/actions/queries";
 import { FeedbackIcon, ShareIcon } from "@/components/Icons";
 import Link from "next/link";
 
-export const ClientButtons = ({ temple }: any) => {
+export const ClientButtons = ({ temple }: { temple: fetchTempleIdType }) => {
   const divClass = "flex text-xs items-center gap-2 cursor-pointer hover:text-blue-600";
 
   return (
